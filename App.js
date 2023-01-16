@@ -1,7 +1,13 @@
 import React from "react"
+import {BrowserRouter} from "react-router-dom"
+import MainRouter from './MainRouter'
 
 export default function App() {
     return(
-        <h1>Dont Trapa Mant, Dapre Zayer Jor. Ega Mudir</h1>
+        <BrowserRouter>
+            <MainRouter/>
+        </BrowserRouter>
+            
+        
     )
 }

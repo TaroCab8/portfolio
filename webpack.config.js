@@ -2,21 +2,23 @@ const path = require('path')
 
 module.exports={
     mode:"development",
-    entry:"./main.js",
+    entry:"./index.js",
     output: {
         path: path.resolve(__dirname, "public"),
-        filename: "bundle.js"
+        filename: "main.js",
+        publicPath:'/',
     },
     target:"web",
     devServer:{
         port: "3000",
         static: ["./public"],
-        open: true,
+        open: false,
         hot: true,
-        liveReload: true
+        liveReload: true,
+        historyApiFallback: true,
     },
     resolve: {
-        extensions: ['.js','jsx','json']
+        extensions: ['.js','.jsx','.json']
     },
     module: {
         rules: [

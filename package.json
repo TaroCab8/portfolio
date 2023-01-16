@@ -2,10 +2,10 @@
   "name": "portfolio",
   "version": "1.0.0",
   "description": "react personal portfolio",
-  "main": "/dist/bundle.js",
+  "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "Webpack .",
+    "start": "webpack-dev-server .",
+    "build": "webpack .",
     "test": "test"
   },
   "repository": {
@@ -25,24 +25,30 @@
     "url": "https://github.com/TaroCab8/portfolio/issues"
   },
   "homepage": "https://github.com/TaroCab8/portfolio#readme",
+  "devDependencies": {
+    "@babel/core": "^7.17.2",
+    "@babel/plugin-transform-runtime": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "@babel/runtime": "^7.17.2",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.3",
+    "eslint": "^8.9.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jest": "^26.1.0",
+    "webpack": "^5.68.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
+  },
   "dependencies": {
+    "@babel/cli": "^7.17.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/material": "^5.11.4",
+    "path": "^0.12.7",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.20.7",
-    "@babel/core": "^7.20.12",
-    "@babel/eslint-parser": "^7.19.1",
-    "@babel/plugin-transform-runtime": "^7.19.6",
-    "@babel/preset-env": "^7.20.2",
-    "@babel/preset-react": "^7.18.6",
-    "@babel/runtime": "^7.20.7",
-    "babel-loader": "^9.1.2",
-    "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.1",
-    "webpack-dev-server": "^4.11.1"
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.1.2"
   }
 }
