@@ -1,18 +1,76 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import Typography from '@mui/material/Typography'
+import TextField from '@mui/material/TextField'
+import {makeStyles} from '@mui/styles'
 
+const useStyles =  makeStyles(theme => ({
+    root:{
+        backgroundColor: 'black',
+        maxHeight: 920,
+        minHeight: 920,
+        margin: '5px',
+        color: theme.palette.text.primary,
+        typography: theme.typography,
+        position: "relative"
+
+    },
+   
+    input: {
+        width: '100%',
+        backgroundColor: 'black',
+        border: 'none',
+        outline: 'none',
+        margin: '5px',
+        color: theme.palette.text.primary,
+        typography: theme.typography,
+        position: 'absolute',
+        bottom: 10,
+        left: 0
+
+    },
+    
+    } ))
+
+ 
 export default function Game() {
-    return (<div style={{backgroundColor:"black", border:"6px solid green", height:"920px", fontFamily: 'VT323',color: "lightgreen", fontSize:"16px"}}>
-        <div id="img-containers" style={{height:"820px"}}>
-        <style>
-  @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-</style>
-            <img></img>
-            <h6 style={{color:"lightgreen", marginTop: "0px", fontSize:"20px",fontFamily: 'VT323'}}>> Choose your language: nl/
-            - f= french
-            - s= spanish 
-            - e= english.</h6>
-        </div>
-        ><input style={{fontFamily: 'VT323',width:"80%", position:"absolute", marginBottom: "0px", backgroundColor:"black", border:"none",color:"lightgreen",fontSize:"20px"}}/>
+    const classes= useStyles()
+    const [values, setValues]= useState(["hi, welcome"])
+    const cue=["hi, welcome", "please, choose your language:", "f=francais","s=spanish","e=english"]
+
+    
+    const handleInput = event => {
+        if(event.key == "Enter"){
+            setValues([...values, "> " + event.target.value])
+            event.target.value=""
+        }
+    }
+    
+    useEffect(()=> {
+        console.log(values)
+
+    })
+    
+    // screen up to 15 elements then clean up
+    if(values.length === 16) {
+        setValues([values[values.length - 1]])
+    }
+
+    return (
+        <div className={classes.root}>
+            
+        {values.map((item,i)=> {
+            return <Typography key={i} >{item}</Typography>
+        })}
+        <TextField InputAdornment=">" className={classes.input} style={{position: "absolute", bottom: 0}} type="text" autoFocus="autoFocus" onKeyDown={handleInput}></TextField>
         
-    </div>)
+        
+        
+            
+        </div>
+    )
 }
+
+
+/**
+ * 
+ */
