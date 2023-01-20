@@ -6,8 +6,8 @@ import {makeStyles} from '@mui/styles'
 const useStyles =  makeStyles(theme => ({
     root:{
         backgroundColor: 'black',
-        maxHeight: 920,
-        minHeight: 920,
+        maxHeight: 720,
+        minHeight: 720,
         margin: '5px',
         color: theme.palette.text.primary,
         typography: theme.typography,
@@ -34,24 +34,56 @@ const useStyles =  makeStyles(theme => ({
  
 export default function Game() {
     const classes= useStyles()
-    const [values, setValues]= useState(["hi, welcome"])
-    const cue=["hi, welcome", "please, choose your language:", "f=francais","s=spanish","e=english"]
+    const [values, setValues]= useState(["Hi Welcome"])
 
-    
-    const handleInput = event => {
-        if(event.key == "Enter"){
-            setValues([...values, "> " + event.target.value])
-            event.target.value=""
+    // set triggers and responses
+    const host = trigger => {
+        const responses = [
+            {
+                question: "> yes",
+                response: "awesome"
+            },
+            {
+                question: "> no",
+                response: "See you next time"
+            },
+            {
+                question: "> como estas",
+                response: "todo bien y vos"
+            },
+            
+        ]
+        // cleaning input for only user questions
+        //const questions = trigger.filter(t => t[0] == ">")
+
+        //perform questions analysis, compare with responses and provide an answer
+        const answer = responses.map(r => {
+            if(trigger == r.question) {
+                return r.response
+            } 
+        }).filter(a =>  {return a !== undefined})
+        return answer.toString() 
         }
-    }
     
+    // getting answers into view
+    const handleInput = event => {
+        
+        if(event.key == "Enter"){
+            setValues([...values, "> " + event.target.value])  
+            event.target.value=""     
+        }
+        
+    }
+          
+    // perform answers reading and shooting responses accordingly        
     useEffect(()=> {
         console.log(values)
-
+        let reply= host((values[values.length - 1]))
+        reply ? setValues([...values, reply]) : 0    
     })
     
     // screen up to 15 elements then clean up
-    if(values.length === 16) {
+    if(values.length === 12) {
         setValues([values[values.length - 1]])
     }
 
@@ -61,7 +93,8 @@ export default function Game() {
         {values.map((item,i)=> {
             return <Typography key={i} >{item}</Typography>
         })}
-        <TextField InputAdornment=">" className={classes.input} style={{position: "absolute", bottom: 0}} type="text" autoFocus="autoFocus" onKeyDown={handleInput}></TextField>
+        
+        <TextField autoFocus={true} className={classes.input} style={{position: "absolute", bottom: 0}} type="text"  onKeyDown={handleInput}></TextField>
         
         
         
