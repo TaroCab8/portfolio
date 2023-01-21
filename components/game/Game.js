@@ -3,16 +3,20 @@ import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import {makeStyles} from '@mui/styles'
 
+
 const useStyles =  makeStyles(theme => ({
     root:{
         backgroundColor: 'black',
-        maxHeight: 720,
-        minHeight: 720,
-        margin: '5px',
+        maxHeight: 925,
+        minHeight: 925,
+        margin: 0,
+        paddingLeft: '20px',
         color: theme.palette.text.primary,
         typography: theme.typography,
-        position: "relative"
-
+        position: "relative",
+        border: "10px solid gray",
+        borderRadius:'50px',
+        
     },
    
     input: {
@@ -25,36 +29,55 @@ const useStyles =  makeStyles(theme => ({
         typography: theme.typography,
         position: 'absolute',
         bottom: 10,
-        left: 0
+        left: 0,
+        borderRadius: '50px'
 
     },
+    textHide: {
+        position: "absolute",
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right:0,
+        backgroundColor: "black",
+        
+    }
     
     } ))
 
  
 export default function Game() {
     const classes= useStyles()
-    const [values, setValues]= useState(["Hi Welcome"])
+    const [values, setValues]= useState(["Welcome"])
 
     // set triggers and responses
     const host = trigger => {
         const responses = [
             {
+                question: "Welcome",
+                response: "Thanks for passing. Are you up for a little game? yes/no"
+            },
+            {
                 question: "> yes",
                 response: "awesome"
             },
             {
-                question: "> no",
-                response: "See you next time"
+                question: "awesome",
+                response: "Loading..."
+            },
+            {
+                question: "> no" || "> n",
+                response: "oh, ok.. :("
+            },
+            {
+                question: "oh, ok.. :(",
+                response: "See you next time."
             },
             {
                 question: "> como estas",
                 response: "todo bien y vos"
-            },
-            
+            },         
         ]
-        // cleaning input for only user questions
-        //const questions = trigger.filter(t => t[0] == ">")
 
         //perform questions analysis, compare with responses and provide an answer
         const answer = responses.map(r => {
@@ -63,24 +86,34 @@ export default function Game() {
             } 
         }).filter(a =>  {return a !== undefined})
         return answer.toString() 
-        }
+    }
     
     // getting answers into view
-    const handleInput = event => {
-        
+    const handleInput = event => {    
         if(event.key == "Enter"){
             setValues([...values, "> " + event.target.value])  
             event.target.value=""     
-        }
-        
+        }      
     }
-          
-    // perform answers reading and shooting responses accordingly        
-    useEffect(()=> {
-        console.log(values)
-        let reply= host((values[values.length - 1]))
-        reply ? setValues([...values, reply]) : 0    
+    
+    // setting values and check outcome
+    let lastItem = values[values.length - 1]
+    let reply=  host(lastItem)
+    console.log(reply)
+        
+    // rendering responses by intervals  
+    useEffect(() =>{
+        
+        const interval = setInterval(() => {
+            reply ? setValues([...values, reply]) : 0 
+            
+        },3000)
+
+        return () => clearInterval(interval)
+        
     })
+    
+       
     
     // screen up to 15 elements then clean up
     if(values.length === 12) {
@@ -89,12 +122,16 @@ export default function Game() {
 
     return (
         <div className={classes.root}>
-            
-        {values.map((item,i)=> {
-            return <Typography key={i} >{item}</Typography>
-        })}
+            {values.map((item,i)=> {
+                    return ( 
+                        <Typography className={"textHide"} key={i} className={classes.textLines}  >{item}</Typography>
+                        )
+                })
+                    
+            }
         
-        <TextField autoFocus={true} className={classes.input} style={{position: "absolute", bottom: 0}} type="text"  onKeyDown={handleInput}></TextField>
+        
+        <TextField InputProps={{disableUnderline: true}} autoFocus={true} className={classes.input} style={{position: "absolute", bottom: 0}} type="text"  onKeyDown={handleInput}></TextField>
         
         
         
