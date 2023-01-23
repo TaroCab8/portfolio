@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
+import InputAdornment from '@mui/material/InputAdornment';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import {makeStyles} from '@mui/styles'
 
 
@@ -15,7 +17,7 @@ const useStyles =  makeStyles(theme => ({
         typography: theme.typography,
         position: "relative",
         border: "10px solid gray",
-        borderRadius:'50px',
+        borderRadius:'15px',
         
     },
    
@@ -30,8 +32,13 @@ const useStyles =  makeStyles(theme => ({
         position: 'absolute',
         bottom: 10,
         left: 0,
-        borderRadius: '50px'
+        borderRadius: '50px',
+        paddingBottom:'5px'
 
+    },
+    iconLoco:{
+        color: theme.palette.text.primary,
+        typography: theme.typography,
     },
     textHide: {
         position: "absolute",
@@ -131,7 +138,11 @@ export default function Game() {
             }
         
         
-        <TextField InputProps={{disableUnderline: true}} autoFocus={true} className={classes.input} style={{position: "absolute", bottom: 0}} type="text"  onKeyDown={handleInput}></TextField>
+        <TextField  InputProps={{  
+          startAdornment: (
+            <InputAdornment  position="start">
+              <KeyboardArrowRightIcon className={classes.iconLoco}/>
+          </InputAdornment>)}} autoFocus={true} className={classes.input} style={{position: "absolute", bottom: 0}} type="text" variant="standard" onKeyDown={handleInput}></TextField>
         
         
         
