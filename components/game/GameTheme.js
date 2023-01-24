@@ -20,7 +20,6 @@ const gameTheme = createTheme({
       typography: {
         fontFamily: 'VT323',
         fontSize: 32,
-        color: 'rgba(57, 255, 20, 1)'
       },
 })
 

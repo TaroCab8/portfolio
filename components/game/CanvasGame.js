@@ -1,5 +1,5 @@
 import React, {useRef, useEffect} from 'react'
-import personaje from "./../../public/gameImg/chewie.png"
+import personaje from "./../../public/gameImg/personaje.png"
 import map from "./../../public/gameImg/map.png"
 
 const CanvasGame = props => {

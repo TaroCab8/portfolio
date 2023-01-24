@@ -6,14 +6,16 @@ import Home from './components/singularity/Home'
 import Contact from './components/singularity/Contact'
 import See from './components/singularity/See'
 import Know from './components/singularity/Know'
-import CanvasGame from './components/game/CanvasGame'
+import Map from './components/game/Map'
+import Quest from './components/game/Quest'
 
 const MainRouter = () => {
     return (<div>
         <Switch>
             <Route exact path="/" component={Game}/>
             <Route path="/home" component={Home}/>
-            <Route path="/map" component= {CanvasGame}/>
+            <Route path="/map" component= {Map}/>
+            <Route path="/quest" component= {Quest}/>
             
         </Switch>
     </div>)
