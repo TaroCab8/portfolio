@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField'
 import InputAdornment from '@mui/material/InputAdornment';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import {makeStyles} from '@mui/styles'
+import {Redirect} from 'react-router-dom'
 
 
 const useStyles =  makeStyles(theme => ({
@@ -56,6 +57,7 @@ const useStyles =  makeStyles(theme => ({
 export default function Game() {
     const classes= useStyles()
     const [values, setValues]= useState(["Welcome"])
+    const [redirect, setRedirect] = useState(false)
 
     // set triggers and responses
     const host = trigger => {
@@ -114,19 +116,26 @@ export default function Game() {
         const interval = setInterval(() => {
             reply ? setValues([...values, reply]) : 0 
             
-        },3000)
+        },2000)
 
         return () => clearInterval(interval)
         
     })
     
-       
+    if(lastItem == "Loading..."){
+        setInterval(() => {
+            setRedirect(true)
+        },3000)    
+    }
     
     // screen up to 15 elements then clean up
     if(values.length === 12) {
         setValues([values[values.length - 1]])
     }
 
+    if(redirect){
+        return(<Redirect to={"/quest"}/>)
+    }
     return (
         <div className={classes.root}>
             {values.map((item,i)=> {

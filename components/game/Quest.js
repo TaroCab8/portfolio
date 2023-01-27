@@ -13,6 +13,7 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import Typography from '@mui/material/Typography'
 import {makeStyles} from '@mui/styles'
 import Divider from '@mui/material/Divider'
+import {Redirect} from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
     cardMedia:{
@@ -64,8 +65,9 @@ const useStyles = makeStyles(theme => ({
 export default function Quest() {
     const classes= useStyles()
     const pics = [intro, inn, tavern, arena, wfh]
-    const text= ["Press: \n 1 --> Inn \n 2 --> Tavern \n 3 --> arena \n 4 --> atelier", "Hi he is my man, you will find him at his atelier", "The guy is not cheap", "He's part of my team, defending the colors of the citè", "Pay me money and we shall have access to creativity"]
+    const text= ["Press: \n 1 --> Inn \n 2 --> Tavern \n 3 --> arena \n 4 --> atelier \n 5 --> To walk there", "Hi he is my man, you will find him at his atelier", "The guy is not cheap", "He's part of my team, defending the colors of the citè", "Pay me money and we shall have access to creativity"]
     const [foto, setFoto]= useState(0)
+    const [redirect, setRedirect] = useState(false)
     
 
     const handleInput = event => {
@@ -80,12 +82,15 @@ export default function Quest() {
                 setFoto(3)
             } else if(data == "4"){
                 setFoto(4)
-            } else {
+            } else if (data=="5"){
+                setRedirect(true)
+            }else {
                 setFoto(0)
             }
             event.target.value="" 
         }
     }
+    
     
 
 
@@ -99,7 +104,9 @@ export default function Quest() {
     useEffect(() => {
         console.log(foto)
     })
-
+    if(redirect) {
+        return(<Redirect to={"/map"} />)
+    }
     return(
         <Card style={{backgroundColor:"black", height:"920px", border:"1px solid white", justifyContent: "center", alignContent: "center", flexDirection:"column"}}>
             <Typography variant="h6" className={classes.typography} >Your quest</Typography>

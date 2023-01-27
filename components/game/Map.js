@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography'
 import {makeStyles} from '@mui/styles'
 import Divider from '@mui/material/Divider'
 import CanvasGame from './CanvasGame'
+import {Redirect} from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
     cardMedia:{
@@ -61,11 +62,15 @@ const useStyles = makeStyles(theme => ({
 
 export default function Map() {
     const classes= useStyles()
+    const [redirect, setRedirect] = useState(false)
 
     const handleInput = () => {
-        if(event.key == "Enter") {
-            console.log(event.target.value)
+        if(event.key == "Enter" && event.target.value === "0") {
+            setRedirect(true)
         }
+    }
+    if(redirect){
+        return (<Redirect to={"/quest"}/>)
     }
 
     return(
