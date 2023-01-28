@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
+import Grid from '@mui/material/Grid'
 import InputAdornment from '@mui/material/InputAdornment';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import {makeStyles} from '@mui/styles'
@@ -10,13 +11,13 @@ import {Redirect} from 'react-router-dom'
 const useStyles =  makeStyles(theme => ({
     root:{
         backgroundColor: 'black',
-        maxHeight: 925,
-        minHeight: 925,
+        height: '100vh',
+        width: '100vw',
         margin: 0,
         paddingLeft: '20px',
         color: theme.palette.text.primary,
         typography: theme.typography,
-        position: "relative",
+        //position: "relative",
         border: "10px solid gray",
         borderRadius:'15px',
         
@@ -129,7 +130,7 @@ export default function Game() {
     }
     
     // screen up to 15 elements then clean up
-    if(values.length === 12) {
+    if(values.length === 11) {
         setValues([values[values.length - 1]])
     }
 
@@ -137,26 +138,31 @@ export default function Game() {
         return(<Redirect to={"/quest"}/>)
     }
     return (
-        <div className={classes.root}>
-            {values.map((item,i)=> {
-                    return ( 
-                        <Typography className={"textHide"} key={i} className={classes.textLines}  >{item}</Typography>
-                        )
-                })
-                    
-            }
         
-        
-        <TextField  InputProps={{  
-          startAdornment: (
-            <InputAdornment  position="start">
-              <KeyboardArrowRightIcon className={classes.iconLoco}/>
-          </InputAdornment>)}} autoFocus={true} className={classes.input} style={{position: "absolute", bottom: 0}} type="text" variant="standard" onKeyDown={handleInput}></TextField>
-        
-        
-        
+            <Grid container  className={classes.root} justifyContent="flex-end" alignItems="flex-start"   >
+                <Grid item xs={12}>
+                {values.map((item,i)=> {
+                        return ( 
+                            <Typography className={"textHide"} key={i} className={classes.textLines}  >{item}</Typography>
+                            )
+                    })
+                        
+                }
+                </Grid>
             
-        </div>
+                <Grid alignSelf="flex-end" item xs={12}>        
+                    <TextField  InputProps={{  
+                startAdornment: (
+                    <InputAdornment  position="start">
+                    <KeyboardArrowRightIcon className={classes.iconLoco}/>
+                </InputAdornment>)}} autoFocus={true} className={classes.input}  type="text" variant="standard" onKeyDown={handleInput}></TextField>
+            </Grid>
+
+            
+            
+                
+        </Grid>
+       
     )
 }
 

@@ -8,6 +8,7 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import TextField from '@mui/material/TextField'
+import Grid from '@mui/material/Grid'
 import InputAdornment from '@mui/material/InputAdornment';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import Typography from '@mui/material/Typography'
@@ -25,8 +26,8 @@ const useStyles = makeStyles(theme => ({
 
     },
     image:{
-        height: "600px",
-        width: "600px",
+        height: "400px",
+        width: "400px",
         border: `4px solid ${theme.palette.text.secondary}`, 
         borderRadius:"25px",
         
@@ -59,6 +60,8 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: "black",
         heigth: '800px',
         color: theme.palette.text.secondary,
+        borderRadius:"25px",
+        paddingLeft: '20px'
     }
     
 }))
@@ -73,7 +76,7 @@ export default function Quest() {
     const handleInput = event => {
         let data
         if(event.key == "Enter") {
-            let data= event.target.value
+            data= event.target.value
             if(data == "1"){
                 setFoto(1)
             } else if( data == "2"){
@@ -90,41 +93,37 @@ export default function Quest() {
             event.target.value="" 
         }
     }
-    
-    
+    //if(props.location.state.foto == 1){
+        //setFoto(1)
+    //}
 
-
-    const clickButton = () => {
-        if(foto > pics.length-2) {
-            setFoto(0)
-        }else{
-            setFoto(foto + 1)
-        }    
-    }
-    useEffect(() => {
-        console.log(foto)
-    })
+    
     if(redirect) {
         return(<Redirect to={"/map"} />)
     }
     return(
-        <Card style={{backgroundColor:"black", height:"920px", border:"1px solid white", justifyContent: "center", alignContent: "center", flexDirection:"column"}}>
-            <Typography variant="h6" className={classes.typography} >Your quest</Typography>
-            <Divider/>
-            <div style={{display: "flex", justifyContent:"center"}}>
-            <CardMedia className={classes.card}>
+        <Grid container alignItems="flex-start" justifyContent="center" style={{backgroundColor:'black',border:'4px solid green', height: '100vh',width:'100vw'}} >
+            <Grid item xs={12}>
+                <Typography variant="h6" className={classes.typography} >Your quest</Typography>
+            </Grid>
+            <Grid item xs="auto">
                     <img className={classes.image} src={pics[foto]} ></img>
-                </CardMedia>
-            </div>
-            <CardContent className={classes.textContainer}>
+ 
+            </Grid>
+            <Grid item xs={12} className={classes.textContainer}>
                 <Typography component="div" variant="body2" className={classes.typography}>{text[foto]}</Typography>
-            </CardContent>
-            <TextField  InputProps={{  
-            startAdornment: (
-              <InputAdornment  position="start">
-                <KeyboardArrowRightIcon className={classes.iconLoco}/>
-            </InputAdornment>)}} onKeyDown={handleInput} autoFocus={true} className={classes.input} style={{position: "absolute", bottom: 0}} type="text" variant="standard"></TextField>
-        </Card>
+            </Grid>
+            <Grid item xs={12} alignSelf="flex-end">
+                <TextField  InputProps={{  
+                startAdornment: (
+                <InputAdornment  position="start">
+                    <KeyboardArrowRightIcon className={classes.iconLoco}/>
+                </InputAdornment>)}} onKeyDown={handleInput} autoFocus={true} className={classes.input} s type="text" variant="standard"></TextField>
+            </Grid>
+        </Grid>
+    
+           
+            
         
     )
 }

@@ -87,6 +87,9 @@ const CanvasGame = props => {
    ]
   
   useEffect(() => {
+    const abortController = new AbortController()
+    //const signal = abortController.signal
+    
     const canvas = canvasRef.current
     const ctx = canvas.getContext("2d");
     canvas.width = 800;
@@ -182,7 +185,8 @@ const CanvasGame = props => {
         let collisions = rectangles.map(r => {
           return !(player.x > r.x + r.w || player.x + player.width < r.x|| player.y > r.y + r.h || player.y + player.height   < r.y)}).filter(a => a == true)
 
-      movePlayer();
+        movePlayer();
+        handlePlayerFrame() 
         
         if(collisions.includes(true) && keys[38]) {
           colisioned.up = true
@@ -204,26 +208,53 @@ const CanvasGame = props => {
 
       }
       
+      /** Setting portals conditions*/
       if(player.x === 362 && player.y === 141){
-        console.log("redirecting")
         setPortal4(true)
       }
+      if(player.x === 551 && player.y === 465){
+        setPortal3(true)
+      }
+      if(player.x === 65 && player.y === 330){
+        setPortal2(true)
+      }
+      if(player.x === 128 && player.y === 501){
+        setPortal1(true)
+      }
+      /**/
       
-        
-      handlePlayerFrame() 
+      
+      
       
     }
 
-    
+     
+  
     
     
     startAnimating(24)
     
+   
+    return function cleanup() {
+      abortController.abort()
+    }
+    
   },[])
   
+  /** Rendering portals */
   if(portal4){
     return (<Redirect to={"/quest"}/>)
   }
+  if(portal3){
+    return (<Redirect to={"/quest"}/>)
+  }
+  if(portal2){
+    return (<Redirect to={"/quest"}/>)
+  }
+  if(portal1){
+    return (<Redirect to={"/quest"}/>)
+  }
+  /**/
   return <canvas ref={canvasRef} {...props}/>  
 }
 
