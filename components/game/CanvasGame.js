@@ -243,7 +243,7 @@ const CanvasGame = props => {
   
   /** Rendering portals */
   if(portal4){
-    return (<Redirect to={"/quest"}/>)
+    return (<Redirect to={{pathname:"/quest", props:{fotoId: "1"}}}/>)
   }
   if(portal3){
     return (<Redirect to={"/quest"}/>)

@@ -1,11 +1,10 @@
 import {createTheme} from '@mui/material/styles'
+import blue from '@mui/material/colors/blue'
 
 const gameTheme = createTheme({
     palette: {
         type: 'light',
-        primary: {
-          main: 'rgba(224, 255, 255, 1)',
-        },
+        primary: blue,
         secondary: {
           main: 'rgba(255, 119, 255, 1)',
         },
@@ -18,7 +17,7 @@ const gameTheme = createTheme({
         },
       },
       typography: {
-        fontFamily: 'VT323',
+        fontFamily: ['VT323','Roboto'].join(','),
         fontSize: 32,
       },
 })

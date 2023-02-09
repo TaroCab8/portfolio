@@ -15,7 +15,12 @@ const MainRouter = () => {
             <Route exact path="/" component={Game}/>
             <Route path="/home" component={Home}/>
             <Route path="/map" component= {Map}/>
-            <Route path="/quest" component= {Quest}/>
+            <Route path="/see" component= {See}/>
+            <Route path="/know" component= {Know}/>
+            <Route path="/contact" component= {Contact}/>
+            <Route path="/quest" component= {(props) => {
+                return <Quest {...props}/>
+                }}/>
             
         </Switch>
     </div>)

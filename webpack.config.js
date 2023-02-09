@@ -18,7 +18,27 @@ module.exports={
         historyApiFallback: true,
     },
     resolve: {
-        extensions: ['.js','.jsx','.json']
+        extensions: ['.js','.jsx','.json'],
+        fallback: {
+            "url": false,
+            "buffer": false,
+            "net": false,
+            "tls": false,
+            "assert": false,
+            "os": false,
+            "crypto": false,
+            "https": false,
+            "querystring": false,
+            "fs": false,
+            "stream": false,
+            "dns": false,
+            "vm": false,
+            "http": false,
+            "zlib":false,
+            "async_hooks": false,
+            "child_process": false
+
+        }
     },
     module: {
         rules: [
@@ -33,5 +53,6 @@ module.exports={
             }
         ]
     },
+    
 }
 

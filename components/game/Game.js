@@ -137,6 +137,10 @@ export default function Game() {
     if(redirect){
         return(<Redirect to={"/quest"}/>)
     }
+    if(lastItem =="See you next time.") {
+  
+            return(<Redirect to={"/home"}/>)   
+    }
     return (
         
             <Grid container  className={classes.root} justifyContent="flex-end" alignItems="flex-start"   >

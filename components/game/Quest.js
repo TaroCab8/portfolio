@@ -15,7 +15,6 @@ import Typography from '@mui/material/Typography'
 import {makeStyles} from '@mui/styles'
 import Divider from '@mui/material/Divider'
 import {Redirect} from 'react-router-dom'
-
 const useStyles = makeStyles(theme => ({
     cardMedia:{
         backgroundColor: "black",
@@ -65,7 +64,7 @@ const useStyles = makeStyles(theme => ({
     }
     
 }))
-export default function Quest() {
+export default function Quest(props) {
     const classes= useStyles()
     const pics = [intro, inn, tavern, arena, wfh]
     const text= ["Press: \n 1 --> Inn \n 2 --> Tavern \n 3 --> arena \n 4 --> atelier \n 5 --> To walk there", "Hi he is my man, you will find him at his atelier", "The guy is not cheap", "He's part of my team, defending the colors of the citè", "Pay me money and we shall have access to creativity"]
@@ -93,14 +92,20 @@ export default function Quest() {
             event.target.value="" 
         }
     }
-    //if(props.location.state.foto == 1){
-        //setFoto(1)
-    //}
+   
+    useEffect(() => {
+        if(props.fotoId == "1"){
+            setFoto(1)
+            console.log(foto)
+    } 
+      
+   })
 
     
     if(redirect) {
         return(<Redirect to={"/map"} />)
     }
+
     return(
         <Grid container alignItems="flex-start" justifyContent="center" style={{backgroundColor:'black',border:'4px solid green', height: '100vh',width:'100vw'}} >
             <Grid item xs={12}>
@@ -123,7 +128,12 @@ export default function Quest() {
         </Grid>
     
            
+
             
         
     )
+    
 }
+
+
+
