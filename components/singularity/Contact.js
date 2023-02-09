@@ -5,6 +5,7 @@ import Card from '@mui/material/Card'
 import CardActions from '@mui/material/CardActions'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
+import credentials from './../credentials'
 import emailjs from "emailjs-com"
 
 
@@ -25,10 +26,10 @@ export default function Contact() {
         e.preventDefault()
 
         emailjs.sendForm(
-            "service_djvhkqs",
-            "template_3ckmovr",
+            credentials.mailgun.service_id,
+            credentials.mailgun.template_id,
             form.current,
-            "s_xbktrLowWfBmOFY",
+            credentials.mailgun.user_id,
         ).then(
             result => console.log(result.text),
             error => console.log(error.text)
