@@ -1,11 +1,14 @@
 import React, {useEffect, useRef} from "react"
 
-import {makeStyles} from "@mui/styles"
+import makeStyles from "@mui/styles/makeStyles"
 
 const useStyles = makeStyles(theme => ({
     canvasStyle: {
-        width: '100vw',
-        height: '100vh'
+        width: '50vh',
+        height: '80vh'
+    },
+    colors: {
+        main: theme.palette.primary.main
     }
         
 }))
@@ -13,27 +16,20 @@ const useStyles = makeStyles(theme => ({
 const CanvasSingular = props => {
     const canvasRef=useRef(null)
     const classes = useStyles()
-    const colors={
-        verde:"rgba(24,68,53,1)",
-        rojo:"rgba(124,29,6,1)",
-        dorado:"rgba(110,92,20,0.7)",
-        azulcito:"rgba(22,64,104,1)",
-        violeta:"rgba(62,29,100,1)"
-        
-    }
+    
     useEffect(() =>{
     const canvas= canvasRef.current
     const ctx = canvas.getContext("2d");
 
-    canvas.width = innerWidth;
-    canvas.height = innerHeight;
-
+    canvas.width = innerWidth / 2
+    canvas.height =  innerHeight
+/* 
     const grd= ctx.createLinearGradient(0,0,600,1)
     grd.addColorStop(1,"#3E1D64")
     grd.addColorStop(0,"#164068")
     ctx.fillStyle = grd
-    ctx.fillRect(0,0, canvas.width, canvas.height)
-
+    ctx.Rect(0,0, canvas.width, canvas.height)
+*/
 /** hexagone maker */
     const a = 2 * Math.PI / 6
     const r = {
@@ -43,24 +39,103 @@ const CanvasSingular = props => {
        shadow: 145,
        light: 50
    }
-   function drawHexagon(x,y,radio, color, colorStroke) {
+   
+   function drawHexagon(x,y,radio, colorStroke) {
        ctx.beginPath();
        for(let i = 0; i < 6; i++){
            ctx.lineTo(x + radio * Math.cos(a * i), y + radio * Math.sin(a * i))
        }
        ctx.closePath()
        ctx.strokeStyle= colorStroke
-       ctx.stroke()
-       ctx.fillStyle= color
-       ctx.fill();
+       ctx.lineWidth = 3
+       ctx.stroke()      
    }
-    // 11- hexagono final
+   
+/** CIRCLES */
+
+//Light
+ctx.beginPath()
+ctx.arc(canvas.width /2, canvas.height/2, 120, 0, Math.PI * 2)
+ctx.arc(canvas.width /2, canvas.height/2, 175,0, Math.PI * 2)
+let radGradIn = ctx.createRadialGradient(canvas.width/2, canvas.height / 2 , 120, canvas.width/2, canvas.height / 2, 175)
+radGradIn.addColorStop(1, 'rgba(1, 46, 64, 0.2)')
+radGradIn.addColorStop(0, 'rgba(34, 183, 242, 0.4)')
+ctx.fillStyle = radGradIn
+ctx.fill()
+ctx.closePath()
+   
+
     
-    drawHexagon(r.final, r.final, r.final, colors.verde,"rgba(166,125,75,1)") 
- 
-   for(let y = r.final; y < canvas.height; y++){
-       drawHexagon(r.final, y, r.final, colors.verde, "rgba(166,125,75,1)")
+   function circleDraw(radio, color, grosor){
+    ctx.beginPath()
+    ctx.arc(canvas.width /2, canvas.height/2, radio, 0, Math.PI * 2)
+    ctx.strokeStyle = color
+    ctx.lineWidth = grosor
+    ctx.stroke()
    }
+   // outter circles
+   circleDraw(200,'rgba(1, 46, 64, 1)',5)
+   circleDraw(196,'rgba(1, 46, 64, 0.8)',5)
+   circleDraw(192,'rgba(1, 46, 64, 0.6)',5)
+   circleDraw(187,'rgba(1, 46, 64, 0.4)',5)
+
+// end outter circles
+
+//inner circles
+
+
+ctx.beginPath()
+   ctx.arc(canvas.width /2, canvas.height/2, 21, 0, Math.PI * 2)
+   ctx.fillStyle ='black'
+   ctx.fill()
+   ctx.closePath()
+
+circleDraw(60,'#035951',90)
+
+   let radGradCenter = ctx.createRadialGradient(canvas.width/2, canvas.height / 2 , 60, canvas.width/2, canvas.height / 2, 2)
+    radGradCenter.addColorStop(1, "black")
+    radGradCenter.addColorStop(1, "#004B47")
+    radGradCenter.addColorStop(0, '#035951')
+    ctx.strokeStyle = radGradCenter
+    ctx.stroke()
+
+circleDraw(60,'#22B7F2',2)
+circleDraw(100,'rgba(34, 183, 242, 1)',25)
+circleDraw(150,'rgba(34, 183, 242, 1)',2)
+
+   
+//end inner circles 
+
+/* Arc */
+   //inner 5
+   function arcos (radio, rad1, rad2, grosor) {
+    ctx.beginPath()
+   ctx.arc(canvas.width / 2, canvas.height / 2, radio, rad1* Math.PI, rad2 * Math.PI, false);
+   ctx.lineWidth = grosor
+   ctx.strokeStyle = "rgba(34, 183, 242, 1)"
+   ctx.stroke()
+   }
+   arcos(120,1.15,1.35,2)
+   arcos(120,1.55,1.75,2)
+   arcos(120,1.95,0.15,2)
+   arcos(120,0.35,0.55,2)
+   arcos(120,0.75,0.95,2)
+
+   //outter 
+
+   arcos(160,1.15,1.35,4)
+   arcos(160,1.38,1.53,4)
+   arcos(160,1.55,1.75,4)
+   arcos(160,1.78,1.93,4)
+   arcos(160,1.95,0.15,4)
+   arcos(160,0.18,0.33,4)
+   arcos(160,0.35,0.55,4)
+   arcos(160,0.58,0.73,4)
+   arcos(160,0.75,0.95,4)
+   arcos(160,0.93,1.13,4)
+   
+   /* End Arc */
+
     
     },[])
 

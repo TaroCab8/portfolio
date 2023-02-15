@@ -3,6 +3,7 @@ import personaje from "./../../public/gameImg/personaje.png"
 import map from "./../../public/gameImg/map.png"
 import {Redirect} from 'react-router-dom'
 
+
 const CanvasGame = props => {
   const canvasRef= useRef(null)
   const [portal4, setPortal4] = useState(false)
