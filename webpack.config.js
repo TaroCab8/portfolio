@@ -3,10 +3,11 @@ const path = require('path')
 module.exports={
     mode:"development",
     entry:"./index.js",
+    devtool: "inline-source-map",
     output: {
-        path: path.resolve(__dirname, "public"),
+        path: path.resolve(__dirname, "/build"),
         filename: "main.js",
-        publicPath:'/',
+        publicPath:'/build/',
     },
     target:"web",
     devServer:{
@@ -51,7 +52,7 @@ module.exports={
                 //test: /\.(|gif|jpg|png)(\?[\s\S]+)?$/,
                 test: /\.(png|svg|jpg|gif|pdf)$/,
                 use: [{
-                    loader:"file-loader",
+                    loader:'file-loader',
                     options: {
                         name: '[name].[ext]'
                     }

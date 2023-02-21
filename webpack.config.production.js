@@ -3,13 +3,14 @@ const CURRENT_WORKING_DIR = process.cwd()
 
 const config = {
     mode: "production",
-    entry: [
-        path.join(CURRENT_WORKING_DIR, 'index.js')
-    ],
-    output:{
-        path: path.join(CURRENT_WORKING_DIR, "/public"),
+    entry:"./index.js",
+    output: {
+        path: path.resolve(__dirname, "/build"),
         filename: "main.js",
-        publicPath: "/"
+        publicPath:'/build/',
+    },
+    devServer:{
+        static: ["./public"],
     },
     module: {
         rules: [
