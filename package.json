@@ -5,6 +5,8 @@
   "main": "./public/main.js",
   "scripts": {
     "start": "webpack serve webpack.config.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "webpack build --config webpack.config.production.js",
     "test": "test"
   },
@@ -12,7 +14,7 @@
     "type": "git",
     "url": "git+https://TaroCab8@github.com/TaroCab8/portfolio.git"
   },
-  "homepage":"https://tarocab8.github.io/portfolio/",
+  "homepage": "https://tarocab8.github.io/portfolio/",
   "keywords": [
     "react",
     "mui",
@@ -37,6 +39,7 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jest": "^26.1.0",
+    "gh-pages": "^5.0.0",
     "webpack": "^5.68.0",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.7.4"
