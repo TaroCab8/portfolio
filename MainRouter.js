@@ -12,15 +12,17 @@ import Quest from './components/game/Quest'
 const MainRouter = () => {
     return (<div>
         <Switch>
-            <Route exact path="/" component={Game}/>
-            <Route path="/home" component={Home}/>
-            <Route path="/map" component= {Map}/>
-            <Route path="/quest" component= {(props) => {
-                return <Quest {...props}/>
-                }}/>
+            <Route exact path="/" component={Home}/>
             
         </Switch>
     </div>)
 }
 
 export default MainRouter
+
+/**
+ * 
+ * <Route path="/map" component= {Map}/>
+    <Route path="/quest" component= {(props) => {
+        return <Quest {...props}/>}}/>
+ */

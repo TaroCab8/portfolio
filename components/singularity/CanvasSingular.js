@@ -22,14 +22,15 @@ const CanvasSingular = props => {
     const ctx = canvas.getContext("2d");
 
     canvas.width = innerWidth / 2
-    canvas.height =  innerHeight
-/* 
-    const grd= ctx.createLinearGradient(0,0,600,1)
+    canvas.height =  innerHeight - innerHeight /3
+
+    /*const grd= ctx.createLinearGradient(0,0,600,1)
     grd.addColorStop(1,"#3E1D64")
     grd.addColorStop(0,"#164068")
-    ctx.fillStyle = grd
-    ctx.Rect(0,0, canvas.width, canvas.height)
-*/
+    ctx.fillStyle = "red"
+    ctx.rect(0,0, canvas.width, canvas.height)
+    ctx.fill()*/
+
 /** hexagone maker */
     const a = 2 * Math.PI / 6
     const r = {

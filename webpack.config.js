@@ -48,8 +48,14 @@ module.exports={
                 use: 'babel-loader'
             },
             {
-                test: /\.(|jpg|png)(\?[\s\S]+)?$/,
-                use: "file-loader"
+                //test: /\.(|gif|jpg|png)(\?[\s\S]+)?$/,
+                test: /\.(png|svg|jpg|gif|pdf)$/,
+                use: [{
+                    loader:"file-loader",
+                    options: {
+                        name: '[name].[ext]'
+                    }
+                }]
             }
         ]
     },
