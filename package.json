@@ -2,10 +2,10 @@
   "name": "portfolio",
   "version": "1.0.0",
   "description": "react personal portfolio",
-  "main": "index.js",
+  "main": "./public/main.js",
   "scripts": {
-    "start": "webpack-dev-server .",
-    "build": "webpack .",
+    "start": "webpack serve webpack.config.js",
+    "build": "webpack build --config webpack.config.production.js",
     "test": "test"
   },
   "repository": {
