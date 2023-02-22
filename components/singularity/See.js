@@ -33,7 +33,7 @@ export default function See() {
     const classes=useStyles()
     return (
         <Grid container justifyContent="flex-start" alignItems="flex-start"   style={{backgroundColor:"theme.palette.background.default", zIndex:3, width:"100%" }}>
-            <Grid item container style={{border:"2px solid yellow"}}>
+            <Grid item container>
                 <motion.div initial={{scale:"0.4", y:"-30%",x:"-50%"}} whileHover={{scale:"1",y:0,x:0}}>
                     <Card style={{height:"100%", margin:0, padding: 0,borderRadius: 20,
             fontSize:"14", backgroundColor:'rgba(3, 89, 81, 0.4)' }} className={classes.cells} >
