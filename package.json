@@ -2,7 +2,7 @@
   "name": "portfolio",
   "version": "1.0.0",
   "description": "react personal portfolio",
-  "main": "./public/main.js",
+  "main": "./build/main.js",
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.js",
     "predeploy": "npm run build",

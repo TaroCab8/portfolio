@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from "react"
+import React, {useEffect, useState,useRef} from "react"
 
 import makeStyles from "@mui/styles/makeStyles"
 
@@ -21,8 +21,9 @@ const CanvasSingular = props => {
     const canvas= canvasRef.current
     const ctx = canvas.getContext("2d");
 
-    canvas.width = innerWidth / 2
-    canvas.height =  innerHeight - innerHeight /3
+
+    canvas.width =  window.innerWidth / 2
+    canvas.height =  window.innerHeight - window.innerHeight /3
 
     /*const grd= ctx.createLinearGradient(0,0,600,1)
     grd.addColorStop(1,"#3E1D64")
@@ -31,7 +32,7 @@ const CanvasSingular = props => {
     ctx.rect(0,0, canvas.width, canvas.height)
     ctx.fill()*/
 
-/** hexagone maker */
+/** hexagone maker
     const a = 2 * Math.PI / 6
     const r = {
        final: 50,
@@ -51,7 +52,7 @@ const CanvasSingular = props => {
        ctx.lineWidth = 3
        ctx.stroke()      
    }
-   
+*/   
 /** CIRCLES */
 
 //Light

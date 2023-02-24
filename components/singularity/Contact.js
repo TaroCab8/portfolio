@@ -120,7 +120,7 @@ export default function Contact() {
                     <form className={classes.formal}  ref={form}>
                         <TextField name="name" label="Name" onChange={handleChange("name")} value={values.name} fullWidth/>
                         <TextField name="email" type="email" label="Email"  onChange={handleChange("email")} value={values.email} fullWidth />
-                        <TextField name="message" type="textArea" multiline label="Message" rows={3} onChange={handleChange("message")} value={values.message} fullWidth/>
+                        <TextField name="message" type="textArea" multiline label="Message" rows={2} onChange={handleChange("message")} value={values.message} fullWidth/>
                     </form>
                     
                     <CardActions>

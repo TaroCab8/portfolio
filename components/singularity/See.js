@@ -32,9 +32,9 @@ const useStyles= makeStyles(theme =>({
 export default function See() {
     const classes=useStyles()
     return (
-        <Grid container justifyContent="flex-start" alignItems="flex-start"   style={{backgroundColor:"theme.palette.background.default", zIndex:3, width:"100%" }}>
-            <Grid item container>
-                <motion.div initial={{scale:"0.4", y:"-30%",x:"-50%"}} whileHover={{scale:"1",y:0,x:0}}>
+        <Grid container direction="column" justifyContent="space-around" alignItems="flex-start" spacing={0}   style={{backgroundColor:"theme.palette.background.default", zIndex:3, height:"100%",width:"100%" }}>
+            <Grid item>
+                <motion.div initial={{height:"100px", width:"20px"}} whileHover={{width:"90%", x:"25px",height:"100%"}}>
                     <Card style={{height:"100%", margin:0, padding: 0,borderRadius: 20,
             fontSize:"14", backgroundColor:'rgba(3, 89, 81, 0.4)' }} className={classes.cells} >
                         <div style={{float:"left", marginRight:"5px", height:"100px", width:"100px", border:"1px solid black"}} ></div>
@@ -47,8 +47,8 @@ export default function See() {
                 </motion.div>
                 
             </Grid>
-            <Grid item container style={{border:"2px solid yellow"}}>
-                <motion.div initial={{scale:"0.4",y:"-90%",x:"-50%"}} whileHover={{scale:"1",x:0, y:"-120%"}}>
+            <Grid item >
+                <motion.div initial={{height:"100px", width:"20px"}} whileHover={{width:"90%", x:"25px",height:"100%"}}>
                     <Card style={{height:"100%", margin:0, padding: 0,borderRadius: 20, backgroundColor:'rgba(3, 89, 81, 0.4)'}} className={classes.cells}>
                         <div style={{float:"left", marginRight:"5px", height:"100px", width:"100px", border:"1px solid black"}} ></div>
                         <CardHeader style={{color:"white"}} >Mern Market Place</CardHeader>
@@ -60,8 +60,8 @@ export default function See() {
                 </motion.div>
                 
             </Grid>
-            <Grid item container style={{border:"2px solid yellow"}}>
-                <motion.div initial={{scale:"0.4",y:"-150%",x:"-50%"}} whileHover={{scale:"1",x:0, y:"-220%"}} >
+            <Grid item>
+                <motion.div  initial={{height:"100px", width:"20px"}} whileHover={{width:"90%", x:"25px", height:"100%"}}>
                     <Card style={{height:"100%", margin:0, padding: 0,borderRadius: 20, backgroundColor:'rgba(3, 89, 81, 0.4)', }} className={classes.cells}>
                         <div style={{float:"left", marginRight:"5px", height:"100px", width:"100px", border:"1px solid black"}} ></div>
                         <CardHeader style={{color:"white"}}>This Portfolio</CardHeader>
