@@ -6,13 +6,12 @@ import MainRouter from './MainRouter'
 
 export default function App() {
     return(
-        <BrowserRouter>
-            <ThemeProvider theme={gameTheme}>
-                <MainRouter/>
-            </ThemeProvider>
-            
-        </BrowserRouter>
-            
+            <BrowserRouter>
+                <ThemeProvider theme={gameTheme}>
+                    <MainRouter/>
+                </ThemeProvider>
+                
+            </BrowserRouter>            
         
     )
 }

@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
     formContainer:{
         width:"100%",   
         height:"100%",
+        padding:"10px",
         backgroundColor:'transparent',
         overflowY:"hidden",
         [theme.breakpoints.up("md")]:{
@@ -61,10 +62,12 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     button: {
-        border: `2px solid ${theme.palette.secondary.main}`,
+        border: `4px solid ${theme.palette.primary.main}`,
         backgtoundColor:"transparent",
         width: "70%",
-        alignText:"center"
+        alignText:"center",
+        color:theme.palette.primary.main,
+        zIndex: 999
     }
     
     
@@ -114,7 +117,7 @@ export default function Contact() {
     return (
 
         <Grid  container className={classes.formContainer}>
-            <Grid item md={12}>
+            <Grid item md={12} sm={6} xs={12}>
                 <Card  style={{backgroundColor:'rgba(3, 89, 81, 0.4)', borderRadius: 50}} className={classes.card} >
                     <Typography>Get in Touch</Typography>
                     <form className={classes.formal}  ref={form}>
@@ -123,8 +126,8 @@ export default function Contact() {
                         <TextField name="message" type="textArea" multiline label="Message" rows={2} onChange={handleChange("message")} value={values.message} fullWidth/>
                     </form>
                     
-                    <CardActions>
-                        <Button variant="outlined" className={classes.button} onClick={clickButton} >Send</Button>
+                    <CardActions style={{width: "70%", justifyContent:"center"}}>
+                        <Button variant="outlined" style={{border: "2px solid #22B7F2",backgroundColor:'#012E40',width: "70%",color:"white"    ,zIndex: 999}} onClick={clickButton} >Send</Button>
                     </CardActions>
                 </Card>
                 <Dialog open={values.open} onClose={handleClose} aria-describedby="alert-dialog-description" >

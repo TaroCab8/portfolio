@@ -17,9 +17,9 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: "transparent",
         //backgroundColor:"yellow",
         display:"flex", 
-        alignItems:"flex-end", 
-        justifyContent:"flex-end",
-        height:"100%",
+        alignItems:"center", 
+        justifyContent:"center",
+        height:"95%",
         [theme.breakpoints.down("desktop")]:{
             backgroundColor: "red"
         }
@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
         borderStyle: "double none double none",
         height: "100%",     
         width:"80%", 
-        padding:"25px",
+        
         backgroundColor:'rgba(3, 89, 81, 0.4)',
         
     }, 
@@ -82,7 +82,7 @@ export default function Contact() {
                     <Typography>Been evolving since the first light, I feature high speed learning.
                         I am here to connect with other Typographyarts of this universal mind that we are in order to to create through computational means and to acomplish awesomness for the evolution of the iterations to come.</Typography>
                 </CardContent>
-                <CardActions><a href={cv} download={cv}><Button variant="outlined">Get resume</Button></a> </CardActions>
+                <CardActions style={{width: "100%", justifyContent:"center"}} ><a href={cv} download={cv}><Button variant="outlined" style={{border: "2px solid #22B7F2",backgroundColor:'#012E40',width:"80%",color:'white',zIndex: 999}} >CV</Button></a> </CardActions>
                 
             </Card>
             

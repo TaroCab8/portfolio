@@ -22,8 +22,8 @@ const CanvasSingular = props => {
     const ctx = canvas.getContext("2d");
 
 
-    canvas.width =  window.innerWidth / 2
-    canvas.height =  window.innerHeight - window.innerHeight /3
+    canvas.width =  window.innerWidth / 2.5
+    canvas.height =  window.innerHeight /2
 
     /*const grd= ctx.createLinearGradient(0,0,600,1)
     grd.addColorStop(1,"#3E1D64")

@@ -27,11 +27,11 @@ const singularTheme = createTheme({
       },
       spacing: 8,
       breakpoints:{
-        vaues:{
-          mobile: 0,
-          tablet: 640,
-          laptop: 1024,
-          desktop: 1200,
+        values:{
+          xs: 0,
+          sm: 840,
+          md: 1024,
+          lg: 1600,
         },
       },
 })
