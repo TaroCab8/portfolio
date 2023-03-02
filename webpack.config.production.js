@@ -1,5 +1,6 @@
 const path = require('path')
 const CURRENT_WORKING_DIR = process.cwd()
+const CopyPlugin = require("copy-webpack-plugin");
 
 const config = {
     mode: "production",
@@ -7,7 +8,7 @@ const config = {
     output: {
         path: path.resolve(__dirname, "build"),
         filename: "main.js",
-        //publicPath:'/build/',
+        publicPath:'/build/',
     },
     devServer:{
         static: ["./public"],
@@ -31,7 +32,15 @@ const config = {
                 }]
             }
         ]
-    }
+    },
+    plugins: [
+        new CopyPlugin({
+          patterns: [
+            { from: "public/index.html", to: "build/" },
+            ,
+          ],
+        }),
+      ],
 
 }
 
