@@ -4,7 +4,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 
 const config = {
     mode: "production",
-    entry:"./index.js",
+    entry:["./index.js","./public/index.html"],
     output: {
         path: path.resolve(__dirname, "build"),
         filename: "main.js",
@@ -30,17 +30,14 @@ const config = {
                         name: '[name].[ext]'
                     }
                 }]
+            },
+            {
+                test: /\.html?$/,
+                loader: "file?name=./[name].[ext]"
             }
         ]
     },
-    plugins: [
-        new CopyPlugin({
-          patterns: [
-            { from: "public/index.html", to: "build/" },
-            ,
-          ],
-        }),
-      ],
+   
 
 }
 
