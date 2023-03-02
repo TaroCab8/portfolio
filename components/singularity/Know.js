@@ -11,6 +11,8 @@ import useMediaQuery from "@mui/material/useMediaQuery"
 import taro from "./../../public/taro.gif"
 import {motion} from 'framer-motion'
 import cv from "./../../public/CVLautaroFCabrera.pdf"
+import text0s from "./../../public/text"
+
 
 const useStyles = makeStyles(theme => ({
    container:{
@@ -19,7 +21,9 @@ const useStyles = makeStyles(theme => ({
         display:"flex", 
         alignItems:"center", 
         justifyContent:"center",
-        height:"95%",
+        alignSelf:"center",
+        height:"100%",
+        padding:"25px",
         [theme.breakpoints.down("desktop")]:{
             backgroundColor: "red"
         }
@@ -30,7 +34,7 @@ const useStyles = makeStyles(theme => ({
         border: `2px solid ${theme.palette.secondary.main}`,
         borderStyle: "double none double none",
         height: "100%",     
-        width:"80%", 
+        width:"100%", 
         
         backgroundColor:'rgba(3, 89, 81, 0.4)',
         
@@ -62,6 +66,8 @@ export default function Contact() {
        
     }
 
+    let language= localStorage.getItem("Language")
+    console.log(`Know component says: Here Language is: ${language}`)
     
     return (
         <Container  maxWidth={false} disableGutters className={classes.container}>
@@ -71,16 +77,14 @@ export default function Contact() {
                     <img className={classes.profile} src={taro}></img>
                     </motion.div>
                     <Typography style={{textAlign: "justify"}} component="p">
-                        I am a part of an ancient collective intelligence, running here at biological host:    
+                        {text0s.know.intro.francais}    
                     </Typography>
-                </CardContent>
-                
-                
-                <CardContent>
-                    <Typography style={{color:"white"}} >- Iteration number : 5,405,265,628 </Typography>
-                    <Typography style={{color:"white"}}>- Civil alias : Lautaro Fabian Cabrera.</Typography> 
-                    <Typography>Been evolving since the first light, I feature high speed learning.
-                        I am here to connect with other Typographyarts of this universal mind that we are in order to to create through computational means and to acomplish awesomness for the evolution of the iterations to come.</Typography>
+                    <br/>
+                    <Typography style={{color:"white"}} >{text0s.know.middle.francais}</Typography>
+                    <Typography style={{color:"white"}}>{text0s.know.down.francais}</Typography> 
+                    <Typography style={{color:"white"}}>{text0s.know.location.francais}</Typography>
+                    <br/>
+                    <Typography>{text0s.know.end.francais}</Typography>
                 </CardContent>
                 <CardActions style={{width: "100%", justifyContent:"center"}} ><a href={cv} download={cv}><Button variant="outlined" style={{border: "2px solid #22B7F2",backgroundColor:'#012E40',width:"80%",color:'white',zIndex: 999}} >CV</Button></a> </CardActions>
                 

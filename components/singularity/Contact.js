@@ -12,6 +12,7 @@ import DialogContentText from '@mui/material/DialogContentText'
 import credentials from './../credentials'
 import emailjs from "emailjs-com"
 import makeStyles from "@mui/styles/makeStyles"
+import text0s from "./../../public/text"
 
 
 const useStyles = makeStyles((theme) => ({
@@ -113,12 +114,13 @@ export default function Contact() {
     const handleClose = () => {
         setValues({...values, open:false})
     }
-    
+    let language= localStorage.getItem("Language")
+    console.log(`Contact component says: Here Language is: ${language}`)
     return (
 
         <Grid  container className={classes.formContainer}>
-            <Grid item md={12} sm={6} xs={12}>
-                <Card  style={{backgroundColor:'rgba(3, 89, 81, 0.4)', borderRadius: 50}} className={classes.card} >
+            <Grid style={{width:"100%"}} item md={12} sm={6} xs={12}>
+                <Card style={{backgroundColor:'rgba(3, 89, 81, 0.4)', borderRadius: 50}} className={classes.card} >
                     <Typography>Get in Touch</Typography>
                     <form className={classes.formal}  ref={form}>
                         <TextField name="name" label="Name" onChange={handleChange("name")} value={values.name} fullWidth/>
@@ -130,9 +132,9 @@ export default function Contact() {
                         <Button variant="outlined" style={{border: "2px solid #22B7F2",backgroundColor:'#012E40',width: "70%",color:"white"    ,zIndex: 999}} onClick={clickButton} >Send</Button>
                     </CardActions>
                 </Card>
-                <Dialog open={values.open} onClose={handleClose} aria-describedby="alert-dialog-description" >
+                <Dialog style={{backgroundColor:'rgba(3, 89, 81, 0.4)', borderRadius: 50}}  open={values.open} onClose={handleClose} aria-describedby="alert-dialog-description" >
                     <DialogContent >
-                        <DialogContentText style={{color: "black"}} id="alert-dialog-description">Thank you for contacting! I'll get in touch real soon.</DialogContentText>
+                        <DialogContentText  id="alert-dialog-description">{text0s.contact.dialog.francais}</DialogContentText>
                     </DialogContent>
                         
                 </Dialog> 

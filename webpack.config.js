@@ -50,7 +50,7 @@ module.exports={
             },
             {
                 //test: /\.(|gif|jpg|png)(\?[\s\S]+)?$/,
-                test: /\.(png|svg|jpg|gif|pdf)$/,
+                test: /\.(mp4|png|svg|jpg|gif|pdf)$/,
                 use: [{
                     loader:'file-loader',
                     options: {

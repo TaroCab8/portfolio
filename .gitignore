@@ -1,5 +1,6 @@
 log.txt
 node_modules
 credentials.js
-game
-gameImg
+./components/game
+./public/gameImg
+.env
