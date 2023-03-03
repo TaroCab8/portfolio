@@ -1,6 +1,6 @@
 const path = require('path')
 const CURRENT_WORKING_DIR = process.cwd()
-const CopyPlugin = require("copy-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
     mode: "production",
@@ -37,7 +37,12 @@ const config = {
             }
         ]
     },
-   
+    plugins: [
+        new HtmlWebpackPlugin({
+          template: 'public/index.html'
+        })
+      ]
+    
 
 }
 
