@@ -31,10 +31,6 @@ const config = {
                     }
                 }]
             },
-            {
-                test: /\.html?$/,
-                loader: "file?name=./[name].[ext]"
-            }
         ]
     },
     plugins: [
