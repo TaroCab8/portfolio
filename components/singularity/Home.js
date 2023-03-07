@@ -1,5 +1,4 @@
 import React, {useEffect, useState, useRef} from "react"
-import CanvasSingular from './CanvasSingular'
 import singularTheme from './SingularTheme'
 import {Link} from 'react-router-dom'
 import {ThemeProvider} from '@mui/material/styles'
@@ -11,6 +10,7 @@ import IconButton from '@mui/material/IconButton'
 import See from './See'
 import Know from './Know'
 import Contact from './Contact'
+import Singular from './Singular'
 import CopyrightIcon from '@mui/icons-material/Copyright';
 import { motion } from "framer-motion"
 import mongoIcon from "./../../public/singular/mongoDb.svg"
@@ -26,10 +26,8 @@ import agileLogo from "./../../public/singular/agile.png"
 import gitLogo from "./../../public/singular/git3.png"
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import taroDev from "./../../public/TaroDev.png"
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import WorkIcon from '@mui/icons-material/Work';
-import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import HomeIcon from '@mui/icons-material/Home';
 import EmailIcon from '@mui/icons-material/Email';
 
@@ -127,7 +125,8 @@ const canvasVariant={
     normal: {scale: 1, y: 0, opacity:1},
     mobileCanvas:{opacity:0},
     laptopCanvas:{scale:0.8},
-    mobilePic: {opacity:1}
+    mobilePic: {opacity:1, brightness:2, blur:[1,2]},
+    mobilePicClosed:{opacity:0}
 }
 
 const buttonVariants={
@@ -223,7 +222,6 @@ export default function Home() {
                         </Grid>
                     <Grid alignSelf="flex-start" style={{overflow:"hidden", /*border:"2px solid yellow"*/}} container item xs={12} sm={6}  md={6} lg={6}  order={{xs:1,sm:2,md:2,lg:2}}  ref={homeRef}>
                             <Grid item sm={1} md={1}/>
-                            <motion.div initial={{opacity:0}}  animate={deviceSize < 900 ? "mobilePic" : 0} variants={canvasVariant} ><img style={{height: "300px", position:"absolute", left:"10%", top:"10%", }} src={taroDev} /></motion.div>
                             <Grid /*style={{border:"2px solid white"}}*/ item container md={1} sm={1} alignItems="center" >
                                 <motion.div variants={buttonVariants}  animate={deviceSize < 900 ? "mobile" : 0}>
                                     <Button variant="outlined" style={{color:"#22B7F2", height: "300px",width: "20px",backgroundColor: 'transparent', zIndex:3, border:"2px #22B7F2", borderRadius:`50% 0% 0% 50%`, borderStyle: "none none none solid"}}  onClick={() => setKnowIsOpen(knowIsOpen => !knowIsOpen)} >
@@ -231,9 +229,9 @@ export default function Home() {
                                     </Button>
                             </motion.div>
                             </Grid>
-                            <Grid /*style={{border:"2px solid cyan",padding:0 }}*/ item container  md={8} sm={8} >
-                                <motion.div initial={{opacity:0}} whileHover={{rotate: 360}} style={{/*border:"2px solid violet",height:"100%",*/ margin:0, position:"relative", left:"-10%"}}  animate={[`${contactIsOpen ? "reduced" : "normal"}`,`${deviceSize < 900 ? "mobileCanvas": "normal"}`, `${deviceSize < 1300 ? "laptopCanvas": "normal"}`]} variants={canvasVariant} >
-                                <CanvasSingular style={{/*border:"1px solid blue",*/ overflow:"visible" }}/>   
+                            <Grid  style={{border:"2px solid cyan",padding:0, heigth:"100%" }} item container  md={8} sm={8} alignItems="center" justifyContent="center" >
+                                <motion.div initial={{opacity:0}} whileHover={{rotate: 360}} style={{height:"100%", margin:0, width:"418px", borderRadius:"50%", display: "flex", alignItems:"center", justifyContent:"center"}}  animate={[`${contactIsOpen ? "reduced" : "normal"}`, `${deviceSize < 1300 ? "laptopCanvas": "normal"}`]} variants={canvasVariant} >
+                                <Singular/>    
                             </motion.div>
                             </Grid>
                             <Grid /*style={{border:"2px solid pink"}}*/ item container alignItems="center" md={1} sm={1}>

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react"
 import {BrowserRouter} from "react-router-dom"
 import {ThemeProvider} from '@mui/material/styles'
-import gameTheme from './components/game/GameTheme'
+import singularTheme from './components/singularity/SingularTheme'
 import MainRouter from './MainRouter'
 import Loading from "./components/singularity/Loading.js"
 
@@ -17,7 +17,7 @@ export default function App() {
     return(
         
             <BrowserRouter>
-                <ThemeProvider theme={gameTheme}>
+                <ThemeProvider theme={singularTheme}>
                     {
                         loading ?
                         <Loading/>
