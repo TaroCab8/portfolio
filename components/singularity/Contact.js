@@ -114,8 +114,8 @@ export default function Contact() {
     const handleClose = () => {
         setValues({...values, open:false})
     }
-    let language= localStorage.getItem("Language")
-    console.log(`Contact component says: Here Language is: ${language}`)
+    //let language= localStorage.getItem("Language")
+    //console.log(`Contact component says: Here Language is: ${language}`)
     return (
 
         <Grid  container className={classes.formContainer}>

@@ -66,8 +66,8 @@ export default function Contact() {
        
     }
 
-    let language= localStorage.getItem("Language")
-    console.log(`Know component says: Here Language is: ${language}`)
+    //let language= localStorage.getItem("Language")
+    //console.log(`Know component says: Here Language is: ${language}`)
     
     return (
         <Container  maxWidth={false} disableGutters className={classes.container}>
