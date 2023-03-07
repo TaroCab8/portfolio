@@ -273,9 +273,9 @@ export default function Home() {
                                         
                         </Grid>
                         <div style={{display:"flex", justifyContent:"center"}}> 
-                            <Button onClick={handleChangeLanguage("english")}>English</Button>
-                            <Button onClick={handleChangeLanguage("español")}>Español</Button>
-                            <Button onClick={handleChangeLanguage("francais")}>Français</Button>
+                            <Button>English</Button>
+                            <Button>Español</Button>
+                            <Button>Français</Button>
                         </div>
                         
                     </Grid>
