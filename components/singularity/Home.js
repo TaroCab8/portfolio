@@ -165,12 +165,12 @@ export default function Home() {
       reference.current.scrollIntoView({behavior:"smooth"})
   }
   let userLang = navigator.language || navigator.userLanguage
-  const handleChangeLanguage = language =>{
-      localStorage.removeItem("Language")
-      localStorage.setItem("Language", language)
+  //const handleChangeLanguage = language =>{
+      //localStorage.removeItem("Language")
+      //localStorage.setItem("Language", language)
       //setLanguage(language)
-      console.log("done")
-  }
+    //  console.log("done")
+  //}
     
     return(
         <ThemeProvider  theme={singularTheme}>
@@ -275,7 +275,7 @@ export default function Home() {
                         <div style={{display:"flex", justifyContent:"center"}}> 
                             <Button onClick={handleChangeLanguage("english")}>English</Button>
                             <Button onClick={handleChangeLanguage("español")}>Español</Button>
-                            <Button onClick={handleChangeLanguage("francais")}>Francais</Button>
+                            <Button onClick={handleChangeLanguage("francais")}>Français</Button>
                         </div>
                         
                     </Grid>
