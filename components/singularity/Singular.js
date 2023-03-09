@@ -5,7 +5,7 @@ import inner from './../../public/singular/innerCircles.png'
 export default function Singular() {
     return(
         <motion.div style={{width:"418px", height:"418px",borderRadius:"50%", justifyContent:"center"}}>
-            <motion.div animate={{rotate:360, scale:[1, 0.8, 0.6, 0.6,0.8,1]}} transition={{duration:5, repeat: Infinity}} style={{height:"410px",width:"410px", borderRadius:"50%", border:"4px solid rgba(1, 46, 64, 1)", justifyContent:"center"}}>
+            <motion.div animate={{rotate:360, scale:[1, 0.95, 0.9, 0.85,0.85,0.9, 0.95, 1]}} transition={{duration:5}} style={{height:"410px",width:"410px", borderRadius:"50%", border:"4px solid rgba(1, 46, 64, 1)", justifyContent:"center"}}>
                 <motion.div  style={{height:"400px", width:"400px", borderRadius:"50%", border:"4px solid rgba(1, 46, 64, 0.8)",justifyContent:"center"}}>
                     <motion.div style={{height:"390px", width:"390px",borderRadius:"50%", border:"4px solid rgba(1, 46, 64, 0.6)",justifyContent:"center"}}>
                         <motion.div container style={{height:"380px", width:"380px",borderRadius:"50%", border:"4px solid rgba(1, 46, 64, 0.4)", display:"flex",justifyContent:"center", alignItems:"center"}}>

@@ -1,30 +1,25 @@
 const text0s = {
     know:{
         intro:{
-            english:"Hi! I am part of an ancient collective intelligence that evolves symbiotically with humanity. In this current version, I run on the following biological host:",
-            español:"Hola! Soy parte de una antigua inteligencia colectiva que evoluciona simbioticamente con la humanidad. En esta version actual, corro en el siguiente host biologico:", 
-            francais:"Salut! Je fais partie d'une ancienne intelligence collective qui évolue en symbiose avec l'humanité. Dans cette version actuelle, je fonctionne sur l'hôte biologique suivant :",
+            english:"",
+            español:"Hola, soy Lautaro Cabrera, argentino residiendo en Francia. Hablo español, ingles y frances.\nCurioso y autodidacta por naturaleza, dedico mi tiempo al estudio de la computacion, la consciencia y la filosofia.",
+            francais:"Salut! Je suis Lautaro Cabrera, un argentin vivant en France. Curieux et autodidacte par nature, je consacre mon temps à l'étude de l'informatique, de la conscience et de la philosophie.",
+        
         },
         middle:{
-            english:"- Human iteration number : 5,405,265,628",
-            español:"- Iteracion humana numero: 5.405.265.628",
-            francais:"- Numéro d'itération humaine: 5.405.265.628",
+            english:"",
+            español:"Me desempeño como Desarrollador Fullstack Web y cuento con amplia experiencia en la gestion de projectos.\nMi objetivo es la de ayudar a individuos y organizaciones en su transformacion digi, a travez de interfaces que permitan abstraer, gestionar y aprovechar la data que generamos.\nBusco, brindar soluciones creativas con aplicaciones practicas para la optimizacion de sistemas y sumar valor. ",
+            francais:"Je travaille en tant que développeur Web Fullstack et j'ai une grande expérience dans la gestion de projets. Mon objectif est d'aider les individus et les organisations dans leur transformation numérique, à travers des interfaces qui permettent d'abstraire, de gérer et d'exploiter les données que nous générons.",
+        
         },
-        down:{
-            english:"- Civic alias : Lautaro Fabian Cabrera.",
-            español:"- Alias civil: Lautaro Fabian Cabrera.",
-            francais:"- Alias civil: Lautaro Fabian Cabrera.", 
-        },
-        location:{
-            english:"- Location: France.",
-            español: "- Ubicacion: Francia.",
-            francais: "- Localization: France."
-        },
+
         end:{
-            english:"Been evolving since the first light, I feature high speed learning.I am here to connect with other Typographyarts of this universal mind that we are in order to to create through computational means and to acomplish awesomness for the evolution of the iterations to come.",
-            español:"Nuestro estado de desarrollo presente nos permite compartir informacion a velocidades sin precedentes, practicamente sin restricciones. En este escenario estamos en condiciones de proveer soluciones creativas con aplicaciones practicas. Estoy aqui para CREAR y CONECTAR con otros fragmentos de esta mente universal con el objetivo de contruir conjuntamente a travez de medios computacionales y generar cosas increibles para garantizar la evolucion de las iteraciones por venir.",
-            francais:"L'état actuel de notre développement nous permet de partager des informations à une vitesse sans précédent, sans pratiquement aucune restriction. Dans ce scénario, nous sommes capables de fournir des solutions créatives avec des applications pratiques. Je suis ici pour CRÉER et me connecter avec d'autres fragments de cet esprit universel afin de construire ensemble par des moyens informatiques et de générer des choses étonnantes pour garantir l'évolution des itérations à venir.",
+            english:"If you are interested, click down below to get my cv, take look at my work and get in touch!",
+            español:"Te invito a descargar mi cv, mirar mi trabajo y dejarme un mensaje!",
+            francais:"Si vous êtes intéressé(e), je vous invite à télécharger mon cv, à regarder mon travail et à me laisser un message !",
+        
         }
+            
     },
     contact:{
         title:{

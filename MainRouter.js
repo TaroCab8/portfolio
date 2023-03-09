@@ -1,14 +1,13 @@
 import React, {Component} from 'react'
 import {Route, Switch} from "react-router-dom"
 import Home from './components/singularity/Home'
-import Fondo from './components/singularity/Back'
+//import Fondo from './components/singularity/Back'
 
 
 const MainRouter = () => {
     return (<div>
         <Switch>
             <Route exact path="/" component={Home}/>
-            <Route  path="/fondo" component={Fondo}/>
             
         </Switch>
     </div>)

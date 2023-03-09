@@ -4,3 +4,5 @@ node_modules
 ./components/game
 ./public/gameImg
 .env
+./components/singularity/Back.js
+Back.js

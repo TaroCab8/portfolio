@@ -76,15 +76,11 @@ export default function Contact() {
                     <motion.div  initial={{opacity:0}} animate={{opacity:1}} transition={{delay:3}} >
                     <img className={classes.profile} src={taro}></img>
                     </motion.div>
-                    <Typography style={{textAlign: "justify"}} component="p">
-                        {text0s.know.intro.francais}    
-                    </Typography>
+                    <Typography style={{color:"white", fontSize:"16px"}}>{text0s.know.intro.francais}</Typography>
                     <br/>
-                    <Typography style={{color:"white"}} >{text0s.know.middle.francais}</Typography>
-                    <Typography style={{color:"white"}}>{text0s.know.down.francais}</Typography> 
-                    <Typography style={{color:"white"}}>{text0s.know.location.francais}</Typography>
+                    <Typography style={{color:"white", fontSize:"16px", justifyText:"center"}}>{text0s.know.middle.francais}</Typography>
                     <br/>
-                    <Typography>{text0s.know.end.francais}</Typography>
+                    <Typography style={{color:"white",fontSize:"16px"}}>{text0s.know.end.francais}</Typography>
                 </CardContent>
                 <CardActions style={{width: "100%", justifyContent:"center"}} ><a href={cv} download={cv}><Button variant="outlined" style={{border: "2px solid #22B7F2",backgroundColor:'#012E40',width:"80%",color:'white',zIndex: 999}} >CV</Button></a> </CardActions>
                 

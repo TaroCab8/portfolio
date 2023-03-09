@@ -21,7 +21,8 @@ const singularTheme = createTheme({
       },
       typography: {
         fontFamily: ['Orbitron', "sans-serif"].join(","),
-        fontSize: 12
+        fontSize: 12,
+        lineHeight: 3,
       },
       shape: {
         borderRadius: 4,
