@@ -231,8 +231,8 @@ export default function Home() {
                             </Grid>
                             <Grid  style={{padding:0, heigth:"100%" }} item container  md={8} sm={8} alignItems="center" justifyContent="center" >
                                 <motion.div initial={{opacity:0}} whileHover={{rotate: 360}} style={{height:"100%", margin:0, width:"418px", borderRadius:"50%", display: "flex", alignItems:"center", justifyContent:"center"}}  animate={[`${contactIsOpen ? "reduced" : "normal"}`, `${deviceSize < 1300 ? "laptopCanvas": "normal"}`]} variants={canvasVariant} >
-                                <Singular/>    
-                            </motion.div>
+                                    <Singular/>    
+                                </motion.div>
                             </Grid>
                             <Grid /*style={{border:"2px solid pink"}}*/ item container alignItems="center" md={1} sm={1}>
                                 <motion.div variants={buttonVariants} animate={deviceSize < 900 ? "mobile" : 0} > 
