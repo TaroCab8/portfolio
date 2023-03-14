@@ -6,6 +6,12 @@ import CardMedia from '@mui/material/CardMedia'
 import CardActions from '@mui/material/CardActions'
 import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
+
+
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Button from '@mui/material/Button'
 import CodeIcon from '@mui/icons-material/Code';
 import makeStyles from '@mui/styles/makeStyles'
@@ -21,20 +27,17 @@ const useStyles= makeStyles(theme =>({
         border: `2px solid ${theme.palette.secondary.main}`,
         borderRadius: 20,
         borderStyle: "none double none double",
-        
-        //backgroundColor: theme.palette.background.default,
-        
-        padding:"10px",
-        width: "100%",
-
-        display:"flex",
-        flexDirection:"column",
-        justifyContent:"center"
     },
 
     codeIcon:{
-        color: theme.palette.secondary.main,
+        color: "white",
         backgroundColor: "transparent"
+    },
+    typo:{
+        [theme.breakpoints.down("lg")]:{
+            fontSize:"0.75em"
+           
+        }
     }
 }))
 const seeVariant= {
@@ -58,54 +61,108 @@ export default function See() {
   
     return (
         
-        <Grid container direction="column" justifyContent="space-evenly" alignItems="flex-start" spacing={{xs:2,md:0}}   style={{backgroundColor:"theme.palette.background.default", zIndex:3, height:"100%",width:"100%" }}>
-            <Grid item justifyContent="center">
-                <motion.div initial={{height:"100px", width:"2px"}} animate={deviceSize < 900 ? "mobile": 0} variants={seeVariant} whileHover={{width:"90%", x:"25px",height:"100%"}}>
-                    <Card style={{height:"100%", margin:0, padding: "10px",borderRadius: 20,
-            fontSize:"14", backgroundColor:'rgba(3, 89, 81, 0.4)',display:"flex", alignItems:"center", justifyContent:"center"  }} className={classes.cells} >
-                        <div style={{height:"250px", width:"250px", border:"1px solid white", borderRadius:20, display:"flex", justifyContent:"center", overflow:"hidden"}} >
-                            <video controls height="100%" src={videoStream}/>
-                        </div>
-                        <CardHeader style={{color:"white",fontSize:"12px"}} title="Mern Video stream app"></CardHeader>
-                        <Typography style={{textAlign:"justify",padding:"5px"}} component="p" >{text0s.see.video.francais} </Typography>
-                        <CardActions>
-                            <Button style={{border: "2px solid #22B7F2",backgroundColor:'#012E40',width:"30%",color:'white',zIndex: 999, justifySelf:"center"}} ><a href="https://github.com/TaroCab8/StreamMedia" target="_blank" ><CodeIcon className={classes.codeIcon} /></a></Button>
-                        </CardActions>
+        <Grid container spacing={{xs:2,md:0, lg:0}}  direction="column" style={{backgroundColor:"theme.palette.background.default", height:"100%", overflow:"visible",zIndex:999}}>
+            <motion.div initial={{scale:0.9}} whileHover={{scale:1.2, zIndex:999, x:"-8%",y:"10%"}} style={{position:"absolute", top:0, backgroundColor:"transparent"}}>
+                <Card  className={classes.cells} style={{backgroundColor:'#0D0D0D'}}>
+                    <CardMedia  style={{objectFit:"cover",height:"18vh", opacity:0.9   }}  loop muted autoPlay component="video"  src={videoStream} />
+                   
+                    <Accordion style={{backgroundColor:'rgba(3, 89, 81, 0.4)'}}>
+                        <AccordionSummary  expandIcon={<ExpandMoreIcon style={{color:"white"}}/>} aria-controls="panel1a-content" id="panel1a-header">
+                            <Typography>Video media app</Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                            <Typography variant="body2" className={classes.typo} >{text0s.see.video.francais}</Typography>
+                            <CardActions style={{overflow:"hidden",justifyContent:"center", alignItens:"center"}}>
+                                <Button style={{border: "2px solid #22B7F2",backgroundColor:'#012E40',width:"30%", height:"30px",color:'white',zIndex: 999, justifySelf:"center"}} ><a href="https://github.com/TaroCab8/StreamMedia" target="_blank" ><CodeIcon className={classes.codeIcon} /></a></Button>
+                            </CardActions>
+                        </AccordionDetails>
+                    </Accordion>
+                </Card>
+            </motion.div>
+                <motion.div initial={{scale:0.9}}  whileHover={{scale:1.2, zIndex:999, x:"-8%",y:"-12%"}} style={{position:"absolute", top:"35%"}}>
+                    <Card className={classes.cells} style={{backgroundColor:'#0D0D0D'}}>
+                    
+                        <CardMedia style={{objectFit:"cover", height:"18vh", opacity:0.9}} loop muted autoPlay component="video" src={market}/>
+                   
+                        <Accordion style={{backgroundColor:'rgba(3, 89, 81, 0.4)'}}>
+                            <AccordionSummary  expandIcon={<ExpandMoreIcon style={{color:"white"}}/>} aria-controls="panel1a-content" id="panel1a-header">
+                                <Typography>Market Place</Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <Typography variant="body2" className={classes.typo} >{text0s.see.market.francais}</Typography>
+                                <CardActions style={{justifyContent:"center", alignItens:"center"}}>
+                                    <Button style={{border: "2px solid #22B7F2",backgroundColor:'#012E40',width:"30%", height:"30px",color:'white',zIndex: 999, justifySelf:"center"}} ><a href="https://github.com/TaroCab8/StreamMedia" target="_blank" ><CodeIcon className={classes.codeIcon} /></a></Button>
+                                </CardActions>
+                            </AccordionDetails>
+                        </Accordion>
+                    
+                    </Card> 
+                </motion.div> 
+                <motion.div initial={{scale:0.9}} whileHover={{scale:1.2, zIndex:999,x:"-8%",y:"-10%"}} style={{position:"absolute", bottom:0,}}>
+                    <Card className={classes.cells} style={{backgroundColor:'#0D0D0D'}} >
+                        <CardMedia  style={{objectFit:"cover",height:"18vh", opacity:0.9}} loop muted autoPlay component="video" src={portfolio}/>
+                    
+                        <Accordion style={{backgroundColor:'rgba(3, 89, 81, 0.4)'}}>
+                            <AccordionSummary  expandIcon={<ExpandMoreIcon style={{color:"white"}}/>} aria-controls="panel1a-content" id="panel1a-header">
+                                <Typography>Le présent portefeuille</Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <Typography variant="body2" className={classes.typo} >{text0s.see.portfolio.francais}</Typography>
+                                <CardActions style={{justifyContent:"center", alignItens:"center"}}>
+                                    <Button style={{border: "2px solid #22B7F2",backgroundColor:'#012E40',width:"30%", height:"30px",color:'white',zIndex: 999, justifySelf:"center"}} ><a href="https://github.com/TaroCab8/StreamMedia" target="_blank" ><CodeIcon className={classes.codeIcon} /></a></Button>
+                                </CardActions>
+                            </AccordionDetails>
+                        </Accordion>
                     </Card>
-                </motion.div>
+                </motion.div> 
                 
-            </Grid>
-            <Grid item >
-                <motion.div initial={{height:"100px", width:"2px"}} animate={deviceSize < 900 ? "mobile": 0} variants={seeVariant} whileHover={{width:"90%", x:"25px",height:"100%"}}>
-                    <Card style={{height:"100%", margin:0, padding: "10px",borderRadius: 20,backgroundColor:'rgba(3, 89, 81, 0.4)',display:"flex", alignItems:"center", justifyContent:"center" }} className={classes.cells}>
-                        <div style={{height:"250px", width:"250px", border:"1px solid white", borderRadius:20, display:"flex", justifyContent:"center", overflow:"hidden"}} >
-                            <video controls height="100%" src={market}/>
-                        </div>
-                        <CardHeader style={{color:"white",fontSize:"12px"}} title="Mern Marketplace" ></CardHeader>
-                        <Typography style={{textAlign:"justify",padding:"5px"}} component="p" >{text0s.see.market.francais}</Typography>
-                        <CardActions>
-                            <Button style={{border: "2px solid #22B7F2",backgroundColor:'#012E40',width:"30%",color:'white',zIndex: 999, justifySelf:"center"}}><a href="https://github.com/TaroCab8/marketPlace" target="_blank" ><CodeIcon className={classes.codeIcon} /></a></Button>
-                        </CardActions>
-                    </Card >
-                </motion.div>
-                
-            </Grid>
-            <Grid item>
-                <motion.div  initial={{height:"100px", width:"2px"}} animate={deviceSize < 900 ? "mobile": 0} variants={seeVariant} whileHover={{width:"90%", x:"25px", height:"100%"}}>
-                    <Card style={{height:"100%", margin:0, padding: "10px",borderRadius: 20, backgroundColor:'rgba(3, 89, 81, 0.4)', display:"flex", alignItems:"center", justifyContent:"center" }} className={classes.cells}>
-                        <div style={{height:"250px", width:"80%", border:"1px solid white", borderRadius:20, display:"flex", justifyContent:"center", overflow:"hidden"}} >
-                            <video controls height="100%" src={portfolio}/>
-                        </div>
-                        <CardHeader style={{color:"white", fontSize:"12px"}} title="This Portfolio"></CardHeader>
-                        
-                        <Typography style={{textAlign:"justify", padding:"5px"}} component="p" >{text0s.see.portfolio.francais}</Typography>
-                        <CardActions>
-                            <Button style={{border: "2px solid #22B7F2",backgroundColor:'#012E40',width:"30%",color:'white',zIndex: 999, justifySelf:"center"}}><a href="https://github.com/TaroCab8/portfolio" target="_blank" ><CodeIcon className={classes.codeIcon} /></a></Button>
-                        </CardActions>
-                    </Card>
-                </motion.div>
-                
-            </Grid>
         </Grid>
     )
 }
+
+
+/**
+ * <Grid container spacing={{xs:2,md:0, lg:0}}  direction="column" alignItems="flexStart" justifyContent="flex-start" style={{backgroundColor:"theme.palette.background.default", height:"100%",border:"2px solid violet", overflow:"visible"}}>
+ */
+//video
+/**
+ * <motion.div initial={{scale:0.4}} whileHover={{scale:0.8}}>
+                            <CardMedia  style={{border:"1px solid brown", }} controls autoPlay component="video"  src={videoStream} />
+                        </motion.div> 
+ * <motion.div initial={{y:"-100%", opacity:0}} whileHover={{y:0,opacity:1}}>
+                            <CardHeader style={{border:"1px solid ligthcoral", overflow:"hidden"}} variant="h6" title="Video media app"></CardHeader>
+                            <Typography style={{border:"1px solid lightgreen", overflow:"hidden"}} variant="body2">{text0s.see.video.francais}</Typography>
+                            <CardActions style={{border:"1px solid salmon", overflow:"hidden",justifyContent:"center", alignItens:"center"}}>
+                                <Button style={{border: "2px solid #22B7F2",backgroundColor:'#012E40',width:"30%", height:"30px",color:'white',zIndex: 999, justifySelf:"center"}} ><a href="https://github.com/TaroCab8/StreamMedia" target="_blank" ><CodeIcon className={classes.codeIcon} /></a></Button>
+                            </CardActions>
+                        </motion.div>
+ */
+
+//market place
+/**
+ * <motion.div initial={{scale:0.4,y:"-20%"}} whileHover={{scale:0.8, y:"-20%"}}>
+                            <CardMedia style={{border:"1px solid brown",  }} controls autoPlay component="video" src={market}/>
+                        </motion.div>
+ * <motion.div initial={{y:"-100%", opacity:0}} whileHover={{y:0,opacity:1}}>
+                            <CardHeader style={{border:"1px solid ligthcoral", overflow:"hidden"}} variant="h6" title="Market place"/>
+                            <Typography style={{border:"1px solid lightgreen", overflow:"hidden"}} variant="body2" >{text0s.see.market.francais}</Typography>
+                            <CardActions style={{border:"1px solid salmon", overflow:"hidden", justifyContent:"center", alignItens:"center"}}>
+                                <Button style={{border: "2px solid #22B7F2",backgroundColor:'#012E40', height:"30px", width:"30%",color:'white',zIndex: 999, justifySelf:"center"}}><a href="https://github.com/TaroCab8/marketPlace" target="_blank" ><CodeIcon className={classes.codeIcon} /></a></Button>
+                            </CardActions>
+                        </motion.div>
+ */
+
+
+//portfolio
+/**
+ * <motion.div initial={{scale:0.4, y:"-40%"}} whileHover={{scale:0.8, y:"40%"}}>
+                            <CardMedia  style={{border:"1px solid brown", }} controls autoPlay component="video" src={portfolio}/>
+                        </motion.div>
+ * <motion.div initial={{y:"-100%", opacity:0}} whileHover={{y:"-50%",opacity:1}}>
+                            <CardHeader style={{border:"1px solid ligthcoral", overflow:"hidden"}} variant="h6" title="Le présent portefeuille"></CardHeader>
+                            <Typography style={{border:"1px solid lightgreen", overflow:"hidden"}} variant="body2" >{text0s.see.portfolio.francais}</Typography>
+                            <CardActions style={{border:"1px solid salmon", overflow:"hidden",justifyContent:"center", alignItens:"center" }}>
+                                <Button style={{border: "2px solid #22B7F2",backgroundColor:'#012E40',height:"30px",width:"30%",color:'white',zIndex: 999, justifySelf:"center"}}><a href="https://github.com/TaroCab8/portfolio" target="_blank" ><CodeIcon className={classes.codeIcon} /></a></Button>
+                            </CardActions>
+                        </motion.div>
+ */

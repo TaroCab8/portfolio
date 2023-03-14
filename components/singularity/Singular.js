@@ -8,7 +8,7 @@ export default function Singular() {
             <motion.div animate={{rotate:360, scale:[1, 0.95, 0.9, 0.85,0.85,0.9, 0.95, 1]}} transition={{duration:5}} style={{height:"410px",width:"410px", borderRadius:"50%", border:"4px solid rgba(1, 46, 64, 1)", justifyContent:"center"}}>
                 <motion.div  style={{height:"400px", width:"400px", borderRadius:"50%", border:"4px solid rgba(1, 46, 64, 0.8)",justifyContent:"center"}}>
                     <motion.div style={{height:"390px", width:"390px",borderRadius:"50%", border:"4px solid rgba(1, 46, 64, 0.6)",justifyContent:"center"}}>
-                        <motion.div container style={{height:"380px", width:"380px",borderRadius:"50%", border:"4px solid rgba(1, 46, 64, 0.4)", display:"flex",justifyContent:"center", alignItems:"center"}}>
+                        <motion.div style={{height:"380px", width:"380px",borderRadius:"50%", border:"4px solid rgba(1, 46, 64, 0.4)", display:"flex",justifyContent:"center", alignItems:"center"}}>
                             <motion.img style={{height:"370px", width:"370px", borderRadius:"50%",justifyContent:"center", alignItems:"center", position:"absolute"}} src={inner}></motion.img>
                             <motion.div style={{height:"258px", width:"258px",borderRadius:"50%", border:"2px solid rgba(34, 183, 242, 1)", display:"flex",justifyContent:"center", alignItems:"center", zIndex:9}}>
                                 <motion.div style={{height:"200px", width:"200px",borderRadius:"50%", border:"25px solid rgba(34, 183, 242, 0.4)",boxShadow:"0 0 50px rgba(1, 46, 64, 0.5),0 0 70px rgba(34, 183, 242, 1)",justifyContent:"center"}}>

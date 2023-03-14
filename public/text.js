@@ -3,7 +3,7 @@ const text0s = {
         intro:{
             english:"",
             español:"Hola, soy Lautaro Cabrera, argentino residiendo en Francia. Hablo español, ingles y frances.\nCurioso y autodidacta por naturaleza, dedico mi tiempo al estudio de la computacion, la consciencia y la filosofia.",
-            francais:"Salut! Je suis Lautaro Cabrera, un argentin vivant en France. Curieux et autodidacte par nature, je consacre mon temps à l'étude de l'informatique, de la conscience et de la philosophie.",
+            francais:"Salut! Je suis Lautaro Cabrera, argentin vivant en France. Curieux et autodidacte par nature, je consacre mon temps à l'étude de l'informatique, de la conscience et de la philosophie.",
         
         },
         middle:{

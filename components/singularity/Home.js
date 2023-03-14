@@ -1,9 +1,7 @@
 import React, {useEffect, useState, useRef} from "react"
 import singularTheme from './SingularTheme'
-import {Link} from 'react-router-dom'
 import {ThemeProvider} from '@mui/material/styles'
 import Grid from '@mui/material/Grid'
-import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton'
@@ -31,14 +29,12 @@ import WorkIcon from '@mui/icons-material/Work';
 import HomeIcon from '@mui/icons-material/Home';
 import EmailIcon from '@mui/icons-material/Email';
 
-import text0s from './../../public/text.js'
 
 import makeStyles from '@mui/styles/makeStyles'
 
 
 const useStyles = makeStyles(theme => ({
     container: {
-         
         height: window.innerHeight * 0.8,
         padding: '10px',
         marginBottom:0,
@@ -50,24 +46,17 @@ const useStyles = makeStyles(theme => ({
         overflowX:"hidden",
         [theme.breakpoints.down("md")]:{
             height:"100%",
-            overflowX:"hidden",
-            
-            
-        }
-        
-        
+            overflowX:"hidden",       
+        }       
     },
     footer:{
         height: window.innerHeight * 0.2,
         backgroundColor: theme.palette.background.default,
         padding:"10px",
-
-        [theme.breakpoints.down("md")]:{
-            
+        [theme.breakpoints.down("md")]:{      
             height:"100%",
             overflowX:"hidden",
-        }
-          
+        }       
     },
     typography:{
         color: "white",
@@ -82,10 +71,8 @@ const useStyles = makeStyles(theme => ({
     },
     mainContainer:{
         [theme.breakpoints.down("md")]:{
-            height:"100%",
-            
-            width:"100%",
-            
+            height:"100%",        
+            width:"100%",     
             flexDirection:"column",
             overflowX:"hidden",
         }
@@ -102,14 +89,20 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
+/* Variants */
 const contactVariants={
     open: {opacity:1, y:"-50%", scale:0.8},
     closed: {opacity:0 ,height:0, y:"-300%" },
     mobile: {opacity:1, y:0, height:"100%"}
 }
 const seeVariants={
-    open: { opacity:1, x:0},
-    closed: {opacity:0, x:"-100%"}
+    open: {  x:0, transition:"tween", delay:0.25},
+    closed: {opacity:0, x:"-100%", width:0},
+    after: {width:"100%",opacity:1,transition:{
+        type:"tween",
+        delay:0.5,
+        duration:1,
+    }}
 }
 const knowVariants={
     open: {x:0,  border: "none",transition:{type:"tween",delay:0.25}},
@@ -121,7 +114,7 @@ const knowVariants={
     }}
 }
 const canvasVariant={
-    reduced: {scale:1, y: "-10%"},
+    reduced: {scale:1, y: "-10%", opacity:1},
     normal: {scale: 1, y: 0, opacity:1},
     mobileCanvas:{opacity:0},
     laptopCanvas:{scale:0.8},
@@ -131,11 +124,14 @@ const canvasVariant={
 
 const buttonVariants={
     mobile:{opacity:0, display:"none"},
-    mobileOpen:{opacity:1,}
+    mobileOpen:{opacity:1,},
+    buttonUP:{y:"-130%"}
 }
 const stackVariant = {
     open:{opacity:1}
 }
+/* End variants */
+
 export default function Home() {
     const classes = useStyles()
     const [contactIsOpen, setContactIsOpen] = useState(false)
@@ -150,20 +146,16 @@ export default function Home() {
     const contactRef = useRef()
 
 
-  useEffect(() => {
-    
+  useEffect(() => { 
     const resizeW = () => changeDeviceSize(window.innerWidth);
-
     window.addEventListener("resize", resizeW); // Update the width on resize
-
-    return () => window.removeEventListener("resize", resizeW);
-    
-    
+    return () => window.removeEventListener("resize", resizeW);  
   }, []);
 
   const handleScroll= (reference) => {
       reference.current.scrollIntoView({behavior:"smooth"})
   }
+
   let userLang = navigator.language || navigator.userLanguage
   //const handleChangeLanguage = language =>{
       //localStorage.removeItem("Language")
@@ -172,11 +164,15 @@ export default function Home() {
     //  console.log("done")
   //}
     
+    
+        
+        
+    
     return(
         <ThemeProvider  theme={singularTheme}>
         
             <Grid container style={{overflowY:"hidden", overflowX:"hidden"}} className={classes.mainContainer}>
-            <motion.div   initial={{opacity:0}} variants={buttonVariants} animate={deviceSize < 800 ? "mobileOpen": 0}>
+            <motion.div   initial={{opacity:0}} variants={buttonVariants} animate={deviceSize < 900 ? "mobileOpen": 0}>
                     <div style={{position: "fixed", right:0, top:`${window.innerWidth * 0.63}px`,height:"200px", width:"50px", zIndex:999,overflowX:"hidden",  }} >
                                     <IconButton style={{color:"#22B7F2",zIndex:"999", border:"2px solid white",backgroundColor:'rgba(3, 89, 81, 0.8)', }} onClick={() => {
                                         handleScroll(knowRef)
@@ -229,10 +225,12 @@ export default function Home() {
                                     </Button>
                             </motion.div>
                             </Grid>
-                            <Grid  style={{padding:0, heigth:"100%" }} item container  md={8} sm={8} alignItems="center" justifyContent="center" >
+                            <Grid  style={{padding:0, heigth:"100%" , }} item container  md={8} sm={8} alignItems="center" justifyContent="center" direction="column">
                                 <motion.div initial={{opacity:0}} whileHover={{rotate: 360}} style={{height:"100%", margin:0, width:"418px", borderRadius:"50%", display: "flex", alignItems:"center", justifyContent:"center"}}  animate={[`${contactIsOpen ? "reduced" : "normal"}`, `${deviceSize < 1300 ? "laptopCanvas": "normal"}`]} variants={canvasVariant} >
                                     <Singular/>    
+                                    
                                 </motion.div>
+                                
                             </Grid>
                             <Grid /*style={{border:"2px solid pink"}}*/ item container alignItems="center" md={1} sm={1}>
                                 <motion.div variants={buttonVariants} animate={deviceSize < 900 ? "mobile" : 0} > 
@@ -242,10 +240,10 @@ export default function Home() {
                             </motion.div>
                             </Grid>
                             <Grid item sm={1} md={1}/>
-                            <Grid item md={12} />
+                            <Grid item md={12}></Grid>
                             <Grid item md={2} />
                             <Grid /*style={{border:"2px solid green"}}*/ item  container justifyContent="center" md={8} >
-                                <motion.div variants={buttonVariants} animate={deviceSize < 900 ? "mobile" : 0} >
+                                <motion.div variants={buttonVariants} animate={[`${deviceSize < 900 ? "mobile" : 0}`,`${contactIsOpen && deviceSize < 1400 ? "buttonUP" : 0}`]} >
                                 <Button variant="outlined"   style={{color:"#22B7F2",width:"300px",height:"30px",backgroundColor: 'transparent',zIndex:3, border:"2px #22B7F2", borderRadius:`0% 0% 50% 50%`, borderStyle: "none none solid none "}} onClick={() => setContactIsOpen(contactIsOpen => !contactIsOpen)} className={classes.emailButton} >
                                     <EmailIcon/>
                                 </Button>
@@ -258,8 +256,8 @@ export default function Home() {
                             
                                                     
                     </Grid>
-                    <Grid  item alignSelf="flex-start" alignItems="center" justifyContent="center"  xs={12} sm={3} md={3} lg={3} style={{ height:"100%", overflow:"hidden"}} order={{xs:3, sm:3, md:3,lg:3}} ref={workRef}>
-                        <motion.div style={{height:"100%"}} animate={seeIsOpen ? "open" : "closed"} variants={seeVariants} transition={{duration:"0.5"}}>
+                    <Grid  item alignSelf="flex-start" container direction="column" alignItems="center" justifyContent="center"  xs={12} sm={3} md={3} lg={3} style={{ height:"100%", overflow:"visible"}} order={{xs:3, sm:3, md:3,lg:3}} ref={workRef}>
+                        <motion.div style={{height:"100%", width:"100%", display:"flex", flexDirection:"column"}} animate={[`${seeIsOpen ? "open" : "closed"}`,`${seeIsOpen ? "after":"closed"}`]} variants={seeVariants} transition={{duration:"0.5"}}>
                             <See />
                         </motion.div>
                     </Grid>  
