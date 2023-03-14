@@ -79,7 +79,7 @@ export default function See() {
                     </Accordion>
                 </Card>
             </motion.div>
-                <motion.div initial={{scale:0.9}}  whileHover={{scale:1.2, zIndex:999, x:"-8%",y:"-12%"}} style={{position:"absolute", top:"35%"}}>
+                <motion.div initial={{scale:0.9}}  whileHover={{scale:1.2, zIndex:999, x:"-8%",y:"-15%"}} style={{position:"absolute", top:"35%"}}>
                     <Card className={classes.cells} style={{backgroundColor:'#0D0D0D'}}>
                     
                         <CardMedia style={{objectFit:"cover", height:"18vh", opacity:0.9}} loop muted autoPlay component="video" src={market}/>
