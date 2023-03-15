@@ -6,8 +6,6 @@ import CardMedia from '@mui/material/CardMedia'
 import CardActions from '@mui/material/CardActions'
 import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
-
-
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -19,6 +17,7 @@ import {motion} from 'framer-motion'
 import portfolio from './../../public/portfolio.mp4'
 import market from './../../public/marketplace.mp4'
 import videoStream from './../../public/videoStream.mp4'
+import tracker from './../../public/tracker.mp4'
 import text0s from "./../../public/text"
 
 
@@ -100,16 +99,16 @@ export default function See() {
                 </motion.div> 
                 <motion.div initial={{scale:0.9}} whileHover={{scale:1.2, zIndex:999,x:"-8%",y:"-10%"}} style={{position:"absolute", bottom:0,}}>
                     <Card className={classes.cells} style={{backgroundColor:'#0D0D0D'}} >
-                        <CardMedia  style={{objectFit:"cover",height:"18vh", opacity:0.9}} loop muted autoPlay component="video" src={portfolio}/>
+                        <CardMedia  style={{objectFit:"cover",height:"18vh", opacity:0.9}} loop muted autoPlay component="video" src={tracker}/>
                     
                         <Accordion style={{backgroundColor:'rgba(3, 89, 81, 0.4)'}}>
                             <AccordionSummary  expandIcon={<ExpandMoreIcon style={{color:"white"}}/>} aria-controls="panel1a-content" id="panel1a-header">
-                                <Typography>Le présent portefeuille</Typography>
+                                <Typography>Suivi des dépenses</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
-                                <Typography variant="body2" className={classes.typo} >{text0s.see.portfolio.francais}</Typography>
+                                <Typography variant="body2" className={classes.typo} >{text0s.see.expenses.francais}</Typography>
                                 <CardActions style={{justifyContent:"center", alignItens:"center"}}>
-                                    <Button style={{border: "2px solid #22B7F2",backgroundColor:'#012E40',width:"30%", height:"30px",color:'white',zIndex: 999, justifySelf:"center"}} ><a href="https://github.com/TaroCab8/StreamMedia" target="_blank" ><CodeIcon className={classes.codeIcon} /></a></Button>
+                                    <Button style={{border: "2px solid #22B7F2",backgroundColor:'#012E40',width:"30%", height:"30px",color:'white',zIndex: 999, justifySelf:"center"}} ><a href="https://github.com/TaroCab8/Expense-Tracker-app" target="_blank" ><CodeIcon className={classes.codeIcon} /></a></Button>
                                 </CardActions>
                             </AccordionDetails>
                         </Accordion>
