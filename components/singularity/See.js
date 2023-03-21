@@ -26,6 +26,10 @@ const useStyles= makeStyles(theme =>({
         border: `2px solid ${theme.palette.secondary.main}`,
         borderRadius: 20,
         borderStyle: "none double none double",
+        [theme.breakpoints.down("sm")]:{
+            scale:1,
+            
+         }
     },
 
     codeIcon:{
@@ -37,10 +41,30 @@ const useStyles= makeStyles(theme =>({
             fontSize:"0.75em"
            
         }
+    }, 
+    seeContainer:{
+        backgroundColor:"theme.palette.background.default", 
+        height:"100%", 
+        overflow:"visible",
+        zIndex:999,
+        [theme.breakpoints.down("sm")]:{
+            justifyContent: "space-between",
+            padding:0
+            
+         }
+    },
+    tarjetas:{
+        
+
+        [theme.breakpoints.down("sm")]:{
+            position:"relative",
+            paddingTop:0, 
+            justifyContent:"flex-start"
+         }
     }
 }))
 const seeVariant= {
-    mobile: {width:"80%", x:"15px",height:"120%"}
+    mobile: {scale:1.2, zIndex:999, x:"-8%",y:"10%"}
 }
 export default function See() {
     const classes=useStyles()
@@ -60,8 +84,8 @@ export default function See() {
   
     return (
         
-        <Grid container spacing={{xs:2,md:0, lg:0}}  direction="column" style={{backgroundColor:"theme.palette.background.default", height:"100%", overflow:"visible",zIndex:999}}>
-            <motion.div initial={{scale:0.9}} whileHover={{scale:1.2, zIndex:999, x:"-8%",y:"10%"}} style={{position:"absolute", top:0, backgroundColor:"transparent"}}>
+        <Grid container spacing={{xs:2,md:0, lg:0}}  direction="column" className={classes.seeContainer}>
+            <motion.div initial={{scale:0.9}} whileHover={{scale:1.2, zIndex:999, x:"-8%",y:"10%"}} style={{position:"absolute", top:0, backgroundColor:"transparent",zIndex:999}}  className={classes.tarjetas}>
                 <Card  className={classes.cells} style={{backgroundColor:'#0D0D0D'}}>
                     <CardMedia  style={{objectFit:"cover",height:"18vh", opacity:0.9   }}  loop muted autoPlay component="video"  src={videoStream} />
                    
@@ -78,7 +102,7 @@ export default function See() {
                     </Accordion>
                 </Card>
             </motion.div>
-                <motion.div initial={{scale:0.9}}  whileHover={{scale:1.2, zIndex:999, x:"-8%",y:"-15%"}} style={{position:"absolute", top:"35%"}}>
+                <motion.div initial={{scale:0.9}}  whileHover={{scale:1.2, zIndex:999, x:"-8%",y:"-15%"}} style={{position:"absolute", top:"35%"}} className={classes.tarjetas}>
                     <Card className={classes.cells} style={{backgroundColor:'#0D0D0D'}}>
                     
                         <CardMedia style={{objectFit:"cover", height:"18vh", opacity:0.9}} loop muted autoPlay component="video" src={market}/>
@@ -97,8 +121,8 @@ export default function See() {
                     
                     </Card> 
                 </motion.div> 
-                <motion.div initial={{scale:0.9}} whileHover={{scale:1.2, zIndex:999,x:"-8%",y:"-10%"}} style={{position:"absolute", bottom:0,}}>
-                    <Card className={classes.cells} style={{backgroundColor:'#0D0D0D'}} >
+                <motion.div initial={{scale:0.9}} whileHover={{scale:1.2, zIndex:999,x:"-8%",y:"-10%"}} style={{position:"absolute", bottom:0,}} className={classes.tarjetas}>
+                    <Card className={classes.cells} style={{backgroundColor:'#0D0D0D'}}  >
                         <CardMedia  style={{objectFit:"cover",height:"18vh", opacity:0.9}} loop muted autoPlay component="video" src={tracker}/>
                     
                         <Accordion style={{backgroundColor:'rgba(3, 89, 81, 0.4)'}}>

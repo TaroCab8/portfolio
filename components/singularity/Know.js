@@ -24,9 +24,9 @@ const useStyles = makeStyles(theme => ({
         alignSelf:"center",
         height:"100%",
         padding:"25px",
-        [theme.breakpoints.down("desktop")]:{
-            backgroundColor: "red"
-        }
+        [theme.breakpoints.down("sm")]:{
+            height:"80%"
+         }
         
         
     }, 

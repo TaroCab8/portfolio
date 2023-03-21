@@ -45,17 +45,26 @@ const useStyles = makeStyles(theme => ({
         overflowY:"hidden",
         overflowX:"hidden",
         [theme.breakpoints.down("md")]:{
-            height:"100%",
+            
             overflowX:"hidden",       
+        },
+        [theme.breakpoints.down("sm")]:{
+            overflowY:"visible",
+            height: window.innerHeight,
+            
+            
+            
         }       
     },
     footer:{
         height: window.innerHeight * 0.2,
         backgroundColor: theme.palette.background.default,
         padding:"10px",
-        [theme.breakpoints.down("md")]:{      
-            height:"100%",
-            overflowX:"hidden",
+        [theme.breakpoints.down("sm")]:{      
+            height:"40%",
+            justifySelf:"flex-end",
+           
+            
         }       
     },
     typography:{
@@ -67,15 +76,21 @@ const useStyles = makeStyles(theme => ({
         border: `2px solid #22B7F2`,
         borderRadius:"20px",
         borderStyle: "none double none double",
-        padding: "5px"
+        padding: "5px",
     },
     mainContainer:{
         [theme.breakpoints.down("md")]:{
             height:"100%",        
             width:"100%",     
-            flexDirection:"column",
+            
             overflowX:"hidden",
-        }
+        },
+        [theme.breakpoints.down("sm")]:{
+            overflowY:"visible",
+            height:"100vh",
+            justifyContent:"space-between",
+            backgroundColor: theme.palette.background.default,
+        }   
     },
     canvasMobile: {
         [theme.breakpoints.down("md")]:{
@@ -85,6 +100,17 @@ const useStyles = makeStyles(theme => ({
     emailButton:{
         [theme.breakpoints.down("md")]: {
             display:"none"
+        }
+    },
+    work:{
+        [theme.breakpoints.down("sm")]:{
+            overflow:"auto"
+        }
+    },
+    stack:{
+        height:"90%",
+        [theme.breakpoints.down("sm")]:{
+           height:"30%"
         }
     }
 }))
@@ -171,8 +197,8 @@ export default function Home() {
     return(
         <ThemeProvider  theme={singularTheme}>
         
-            <Grid container style={{overflowY:"hidden", overflowX:"hidden"}} className={classes.mainContainer}>
-            <motion.div   initial={{opacity:0}} variants={buttonVariants} animate={deviceSize < 900 ? "mobileOpen": 0}>
+            <Grid container  className={classes.mainContainer}>
+                <motion.div   initial={{opacity:0}} variants={buttonVariants} animate={deviceSize < 900 ? "mobileOpen": 0}>
                     <div style={{position: "fixed", right:0, top:`${window.innerWidth * 0.63}px`,height:"200px", width:"50px", zIndex:999,overflowX:"hidden",  }} >
                                     <IconButton style={{color:"#22B7F2",zIndex:"999", border:"2px solid white",backgroundColor:'rgba(3, 89, 81, 0.8)', }} onClick={() => {
                                         handleScroll(knowRef)
@@ -216,47 +242,47 @@ export default function Home() {
                         </motion.div>
                         
                         </Grid>
-                    <Grid alignSelf="flex-start" style={{overflow:"hidden", /*border:"2px solid yellow"*/}} container item xs={12} sm={6}  md={6} lg={6}  order={{xs:1,sm:2,md:2,lg:2}}  ref={homeRef}>
-                            <Grid item sm={1} md={1}/>
-                            <Grid /*style={{border:"2px solid white"}}*/ item container md={1} sm={1} alignItems="center" >
+                    <Grid alignSelf="flex-start" style={{overflow:"hidden"}} container item xs={12} sm={6}  md={6} lg={6}  order={{xs:1,sm:2,md:2,lg:2}}  ref={homeRef}>
+                            <Grid item sm={1} md={1} />
+                            <Grid  item container md={1} sm={1} alignItems="center" >
                                 <motion.div variants={buttonVariants}  animate={deviceSize < 900 ? "mobile" : 0}>
                                     <Button variant="outlined" style={{color:"#22B7F2", height: "300px",width: "20px",backgroundColor: 'transparent', zIndex:3, border:"2px #22B7F2", borderRadius:`50% 0% 0% 50%`, borderStyle: "none none none solid"}}  onClick={() => setKnowIsOpen(knowIsOpen => !knowIsOpen)} >
                                         <VisibilityIcon/>
                                     </Button>
                             </motion.div>
                             </Grid>
-                            <Grid  style={{padding:0, heigth:"100%" , }} item container  md={8} sm={8} alignItems="center" justifyContent="center" direction="column">
+                            <Grid  style={{padding:0, heigth:"100%"}} item container  md={8} sm={8} alignItems="center" justifyContent="center" direction="column">
                                 <motion.div initial={{opacity:0}} whileHover={{rotate: 360}} style={{height:"100%", margin:0, width:"418px", borderRadius:"50%", display: "flex", alignItems:"center", justifyContent:"center"}}  animate={[`${contactIsOpen ? "reduced" : "normal"}`, `${deviceSize < 1300 ? "laptopCanvas": "normal"}`]} variants={canvasVariant} >
                                     <Singular/>    
                                     
                                 </motion.div>
                                 
                             </Grid>
-                            <Grid /*style={{border:"2px solid pink"}}*/ item container alignItems="center" md={1} sm={1}>
+                            <Grid  item container alignItems="center" md={1} sm={1}>
                                 <motion.div variants={buttonVariants} animate={deviceSize < 900 ? "mobile" : 0} > 
                                 <Button variant="outlined"  style={{color:"#22B7F2", height: "300px",width:"20px",backgroundColor: 'transparent',zIndex:3, border:"2px #22B7F2", borderRadius:`0% 50% 50% 0%`, borderStyle: "none solid none none"}} onClick={() => setSeeIsOpen(seeIsOpen => !seeIsOpen)} >
                                     <WorkIcon/>
                                 </Button>
                             </motion.div>
                             </Grid>
-                            <Grid item sm={1} md={1}/>
-                            <Grid item md={12}></Grid>
+                            <Grid item sm={1} md={1} />
+                            <Grid item md={12} ></Grid>
                             <Grid item md={2} />
-                            <Grid /*style={{border:"2px solid green"}}*/ item  container justifyContent="center" md={8} >
+                            <Grid  item  container justifyContent="center" md={8} >
                                 <motion.div variants={buttonVariants} animate={[`${deviceSize < 900 ? "mobile" : 0}`,`${contactIsOpen && deviceSize < 1400 ? "buttonUP" : 0}`]} >
                                 <Button variant="outlined"   style={{color:"#22B7F2",width:"300px",height:"30px",backgroundColor: 'transparent',zIndex:3, border:"2px #22B7F2", borderRadius:`0% 0% 50% 50%`, borderStyle: "none none solid none "}} onClick={() => setContactIsOpen(contactIsOpen => !contactIsOpen)} className={classes.emailButton} >
                                     <EmailIcon/>
                                 </Button>
                             </motion.div>
                             </Grid>
-                            <Grid item md={2} />
+                            <Grid item md={2}  />
                             
                             
                             
                             
                                                     
                     </Grid>
-                    <Grid  item alignSelf="flex-start" container direction="column" alignItems="center" justifyContent="center"  xs={12} sm={3} md={3} lg={3} style={{ height:"100%", overflow:"visible"}} order={{xs:3, sm:3, md:3,lg:3}} ref={workRef}>
+                    <Grid  item alignSelf="flex-start" container direction="column" alignItems="center" justifyContent="center"  xs={12} sm={3} md={3} lg={3} style={{ height:"100%", overflow:"visible"}} className={classes.work} order={{xs:3, sm:3, md:3,lg:3}} ref={workRef}>
                         <motion.div style={{height:"100%", width:"100%", display:"flex", flexDirection:"column"}} animate={[`${seeIsOpen ? "open" : "closed"}`,`${seeIsOpen ? "after":"closed"}`]} variants={seeVariants} transition={{duration:"0.5"}}>
                             <See />
                         </motion.div>
@@ -283,22 +309,22 @@ export default function Home() {
                         </motion.div>
                     </Grid>
                     
-                        <Grid item xs={12} sm={3} md={3} lg={3}  alignItems="center"  justifyContent="center" alignSelf="center" style={{backgroundColor:'#22B7F2', height:"90%", overflowX:"hidden",overflow:"visible", border:"2px solid white", borderRadius:20, borderStyle:"none double none double", paddingLeft:"10px"}} container order={{xs:1, sm:3, md:3, lg:3}}>
+                    <Grid item xs={12} sm={3} md={3} lg={3}  alignItems="center"  justifyContent="center" alignSelf="center" style={{backgroundColor:'#22B7F2', overflowX:"hidden",overflow:"visible", borderRadius:20, borderStyle:"none double none double", paddingLeft:"10px"}} container order={{xs:1, sm:3, md:3, lg:3}} className={classes.stack}>
                             
-                                <Grid item container alignItems="center" justifyContent="center" xs={12} md={12} lg={12}><Typography className={classes.typography} style={{ color:"white"}}> Stack </Typography></Grid>
-                                <Grid item lg={3} md={2} xs={2} ><img height="30px" src={jsIcon}/></Grid>
-                                <Grid item lg={3} md={2} xs={2} ><img height="30px" src={expressIcon} /></Grid>
-                                <Grid item lg={3} md={2} xs={2} ><img height="30px" src={reactLogo} /></Grid>
-                                <Grid item lg={3} md={2} xs={2}><img height="30px" src={muiLogo} /></Grid>
-                                <Grid item lg={3} md={2} xs={2} ><img height="30px" src={mongoIcon} /></Grid>
-                                <Grid item lg={3} md={2} xs={2} ><img height="30px" src={css3}/></Grid>
-                                <Grid item lg={3} md={2} xs={2} ><img height="30px" src={nodeLogo}/></Grid>
-                                <Grid item lg={3} md={2} xs={2} ><img height="30px" src={pythonLogo}/></Grid>
-                                <Grid item lg={3} md={2} xs={2}><img height="30px" src={apiLogo}/></Grid>
-                                <Grid item lg={3} md={2} xs={2}><img height="30px" src={agileLogo}/></Grid>
-                                <Grid item lg={3} md={2} xs={2}><img height="30px"  style={{backgroundColor:'#22B7F2'}} src={gitLogo}/></Grid>
+                        <Grid item container alignItems="center" justifyContent="center" xs={12} md={12} lg={12}><Typography className={classes.typography} style={{ color:"white"}}> Stack </Typography></Grid>
+                        <Grid item lg={3} md={2} xs={2} ><img height="30px" src={jsIcon}/></Grid>
+                        <Grid item lg={3} md={2} xs={2} ><img height="30px" src={expressIcon} /></Grid>
+                        <Grid item lg={3} md={2} xs={2} ><img height="30px" src={reactLogo} /></Grid>
+                        <Grid item lg={3} md={2} xs={2}><img height="30px" src={muiLogo} /></Grid>
+                        <Grid item lg={3} md={2} xs={2} ><img height="30px" src={mongoIcon} /></Grid>
+                        <Grid item lg={3} md={2} xs={2} ><img height="30px" src={css3}/></Grid>
+                        <Grid item lg={3} md={2} xs={2} ><img height="30px" src={nodeLogo}/></Grid>
+                        <Grid item lg={3} md={2} xs={2} ><img height="30px" src={pythonLogo}/></Grid>
+                        <Grid item lg={3} md={2} xs={2}><img height="30px" src={apiLogo}/></Grid>
+                        <Grid item lg={3} md={2} xs={2}><img height="30px" src={agileLogo}/></Grid>
+                        <Grid item lg={3} md={2} xs={2}><img height="30px"  style={{backgroundColor:'#22B7F2'}} src={gitLogo}/></Grid>
                             
-                        </Grid>  
+                    </Grid>  
                     
                       
                 </Grid>
